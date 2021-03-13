@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_13_100741) do
+ActiveRecord::Schema.define(version: 2021_03_13_112820) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,8 +20,8 @@ ActiveRecord::Schema.define(version: 2021_03_13_100741) do
     t.date "deadline"
     t.date "reminder"
     t.bigint "user_id", null: false
-    t.bigint "type_id", null: false
     t.bigint "folder_id", null: false
+    t.bigint "type_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["folder_id"], name: "index_documents_on_folder_id"
@@ -31,10 +31,10 @@ ActiveRecord::Schema.define(version: 2021_03_13_100741) do
 
   create_table "folders", force: :cascade do |t|
     t.string "name"
-    t.bigint "folder_id", null: false
+    t.bigint "parent_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["folder_id"], name: "index_folders_on_folder_id"
+    t.index ["parent_id"], name: "index_folders_on_parent_id"
   end
 
   create_table "types", force: :cascade do |t|
@@ -58,5 +58,5 @@ ActiveRecord::Schema.define(version: 2021_03_13_100741) do
   add_foreign_key "documents", "folders"
   add_foreign_key "documents", "types"
   add_foreign_key "documents", "users"
-  add_foreign_key "folders", "folders"
+  add_foreign_key "folders", "folders", column: "parent_id"
 end
