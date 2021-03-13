@@ -48,7 +48,7 @@ type_2 = { name: "Garantie"}
 type_3 = { name: "Contrat"}
 
 [type_1, type_2, type_3].each do |attributes|
-  folder = Type.create!(attributes)
+  type = Type.create!(attributes)
   puts "Created #{type.id}"
 end
 puts "Types finished!"
@@ -68,7 +68,7 @@ Dir.glob(images_path + "/*").each do |f|
 
   document = Document.new(name: "assurance vie", deadline: "2022/02/15", reminder: "2022/02/05", user_id: User.first.id, folder_id: Folder.first.id)
 
-  document.picture.attach(io: file, filename: filename, content_type: "image/jpg")
+  # document.picture.attach(io: file, filename: filename, content_type: "image/pdf")
 
   document.save!
 
