@@ -7,4 +7,5 @@ class User < ApplicationRecord
   has_many :documents
   has_many :folders
   has_many :types
+
 end
