@@ -10,10 +10,38 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_11_183238) do
+ActiveRecord::Schema.define(version: 2021_03_13_100741) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "documents", force: :cascade do |t|
+    t.string "name"
+    t.date "deadline"
+    t.date "reminder"
+    t.bigint "user_id", null: false
+    t.bigint "type_id", null: false
+    t.bigint "folder_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["folder_id"], name: "index_documents_on_folder_id"
+    t.index ["type_id"], name: "index_documents_on_type_id"
+    t.index ["user_id"], name: "index_documents_on_user_id"
+  end
+
+  create_table "folders", force: :cascade do |t|
+    t.string "name"
+    t.bigint "folder_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["folder_id"], name: "index_folders_on_folder_id"
+  end
+
+  create_table "types", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -27,4 +55,8 @@ ActiveRecord::Schema.define(version: 2021_03_11_183238) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "documents", "folders"
+  add_foreign_key "documents", "types"
+  add_foreign_key "documents", "users"
+  add_foreign_key "folders", "folders"
 end
