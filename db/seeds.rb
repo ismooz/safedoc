@@ -8,9 +8,9 @@
 
 puts "Cleaning databases..."
 User.destroy_all
-Folder.destroy.all
-Type.destroy.all
-# DocumentTypes.destroy.all
+Folder.destroy_all
+Type.destroy_all
+DocumentType.destroy_all
 
 require 'open-uri'
 require 'nokogiri'
@@ -18,8 +18,8 @@ require 'nokogiri'
 puts "Creating users..."
 
 user_1 = { email: "ismael@email.com",  password: "123456"}
-user_2 = { email: "ivan@email.com@email.com",  password: "123456"}
-user_3 = { email: "antoine@email.com@email.com",  password: "123456"}
+user_2 = { email: "ivan@email.com",  password: "123456"}
+user_3 = { email: "antoine@email.com",  password: "123456"}
 
 [user_1, user_2, user_3].each do |attributes|
   user = User.create!(attributes)
