@@ -8,8 +8,9 @@
 
 puts "Cleaning databases..."
 User.destroy_all
-Folder.destray.all
+Folder.destroy.all
 Type.destroy.all
+# DocumentTypes.destroy.all
 
 require 'open-uri'
 require 'nokogiri'
@@ -65,7 +66,7 @@ Dir.glob(images_path + "/*").each do |f|
   file = File.open(filepath)
 
 
-  document = Document.new(name: "assurance vie", deadline: "2022/02/15", reminder: "2022/02/05", user_id: User.first.id, type_id: Type.first.id, folder_id: Folder.first.id)
+  document = Document.new(name: "assurance vie", deadline: "2022/02/15", reminder: "2022/02/05", user_id: User.first.id, folder_id: Folder.first.id)
 
   document.picture.attach(io: file, filename: filename, content_type: "image/jpg")
 
