@@ -10,7 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 2021_03_13_155418) do
+=======
+ActiveRecord::Schema.define(version: 2021_03_13_141239) do
+>>>>>>> master
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,6 +34,7 @@ ActiveRecord::Schema.define(version: 2021_03_13_155418) do
     t.date "reminder"
     t.bigint "user_id", null: false
     t.bigint "folder_id", null: false
+    t.bigint "type_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["folder_id"], name: "index_documents_on_folder_id"
@@ -38,10 +43,10 @@ ActiveRecord::Schema.define(version: 2021_03_13_155418) do
 
   create_table "folders", force: :cascade do |t|
     t.string "name"
-    t.bigint "folder_id", null: false
+    t.bigint "parent_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["folder_id"], name: "index_folders_on_folder_id"
+    t.index ["parent_id"], name: "index_folders_on_parent_id"
   end
 
   create_table "types", force: :cascade do |t|
@@ -58,6 +63,10 @@ ActiveRecord::Schema.define(version: 2021_03_13_155418) do
     t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "first_name"
+    t.string "last_name"
+    t.date "birthdate"
+    t.string "address"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
@@ -66,5 +75,5 @@ ActiveRecord::Schema.define(version: 2021_03_13_155418) do
   add_foreign_key "document_types", "types"
   add_foreign_key "documents", "folders"
   add_foreign_key "documents", "users"
-  add_foreign_key "folders", "folders"
+  add_foreign_key "folders", "folders", column: "parent_id"
 end
