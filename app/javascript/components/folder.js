@@ -1,0 +1,4 @@
+const openFolder = () => {
+}
+
+export { openFolder };
