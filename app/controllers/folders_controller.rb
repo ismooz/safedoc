@@ -1,11 +1,12 @@
 class FoldersController < ApplicationController
   def index
-    @folders = policy_scope(Folder)
+    @folders = policy_scope(Folder) # what does that mean ?
+    @folders = Folder.where(parent_id: nil)
   end
 
   def show
-    @folder = Folder.find(params[:id])
-    authorize @folder
+    @folders = Folder.where(parent_id: params[:id])
+    authorize @folders
   end
   
 end
