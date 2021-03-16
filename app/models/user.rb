@@ -8,4 +8,6 @@ class User < ApplicationRecord
   has_many :folders
   has_many :types
 
+  has_one_attached :profile_image
+
 end
