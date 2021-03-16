@@ -7,10 +7,23 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 puts "Cleaning databases..."
-User.destroy_all
-Folder.destroy_all
+
+
 Type.destroy_all
-DocumentType.destroy_all
+puts "destroy type"
+Folder.destroy_all
+puts "destroy folder"
+
+
+Document.destroy_all
+puts "destroy Document"
+Folder.destroy_all
+puts "folder NOT destroyed"
+
+User.destroy_all
+puts "destroy user"
+
+
 
 require 'open-uri'
 require 'nokogiri'
@@ -21,11 +34,12 @@ user_1 = { email: "ismael@email.com",  password: "123456"}
 user_2 = { email: "ivan@email.com",  password: "123456"}
 user_3 = { email: "antoine@email.com",  password: "123456"}
 
-[user_1, user_2, user_3].each do |attributes|
-  user = User.create!(attributes)
-  puts "Created #{user.id}"
-end
-puts "Users finished!"
+# [user_1, user_2, user_3].each do |attributes|
+#   user = User.create!(attributes)
+#   puts "Created #{user.id}"
+# end
+# puts "Users finished!"
+
 
 
 puts "Creating folders..."
@@ -61,22 +75,29 @@ puts "Types finished!"
 puts "Creating documents..."
 
 # path of images (relative)
-images_path = File.expand_path(".", Dir.pwd) + "/app/assets/images/doc_samples"
+# path = File.expand_path(".", Dir.pwd) + "/app/assets/images/doc_samples"
 
-Dir.glob(images_path + "/*").each do |f|
-  filename_wo_extension = File.basename(f, ".pdf")
-  filename = File.basename(f)
-  filepath = File.path(f)
-  file = File.open(filepath)
+path = File.join(Rails.root, 'app', 'assets', 'images', 'doc_samples')
+
+Dir.glob(path + "/*").each do |f|
+   filename_wo_extension = File.basename(f, ".pdf")
+   filename = File.basename(f)
+   filepath = File.path(f)
 
 
-  document = Document.new(name: "assurance vie", deadline: "2022/02/15", reminder: "2022/02/05", user_id: User.first.id, folder_id: Folder.first.id)
+
+
+#   document = Document.new(name: "assurance vie", deadline: "2022/02/15", reminder: "2022/02/05", user_id: User.first.id, folder_id: Folder.first.id)
 
   # document.picture.attach(io: file, filename: filename, content_type: "image/pdf")
+puts "rrr"
+  Cloudinary::Uploader.upload("app/assets/images/doc_samples/#{filename}", :ocr => "adv_ocr")
 
-  document.save!
+  puts "#{filename}"
 
-  puts "Created #{document.id}"
+  # Cloudinary::Uploader.upload("sample.pdf",
+  # :ocr => "adv_ocr")
+
 end
 
 puts "Documents finished!"
