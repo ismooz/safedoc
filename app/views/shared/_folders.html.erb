@@ -1,0 +1,10 @@
+<table class="table table-borderless table-hover">
+  <tbody>
+  <% @folders.each do |folder| %>
+    <tr class="pointer-cursor" data-link="<%= folder_path(folder) %>">
+      <td class="text-secondary icon-column-width"><i class="fas fa-folder fa-2x"></i></td>
+      <td class="align-text-vertical"><%= folder.name %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
