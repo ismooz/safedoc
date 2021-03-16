@@ -26,18 +26,8 @@ require("channels")
 import "bootstrap";
 import { openFolder } from '../components/folder';
 
-/*   document.addEventListener('turbolinks:load', () => {
+document.addEventListener('turbolinks:load', () => {
    // Call your functions here, e.g:
    // initSelect2();
    openFolder();
- }); */
-
- document.addEventListener('turbolinks:load', function() {
-  $(document).ready(function() {
-    $("tr[data-link]").click(function(event){
-        console.log("click")
-        window.location.href = $(this).data("link")
-        event.preventDefault();
-    });
-  });
-})
+ });
