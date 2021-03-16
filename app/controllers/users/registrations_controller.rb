@@ -12,8 +12,13 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # POST /resource
   def create
     super
+    @user = User.new(configure_sign_up_params) # pquoi ça marche alors que ce n'est pas un string
+    if @user.save
+      redirect_to @user
+    else
+      render :new # il faut render pour afficher le message d'erreur
+    end
   end
-
   # GET /resource/edit
   def edit
     super
