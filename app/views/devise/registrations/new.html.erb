@@ -15,6 +15,10 @@
     <%= f.input :birthdate,
                 as: :string,
                 required: false, input_html: {class: "datepicker"} %>
+    <%= f.input :address,
+                required: true,
+                autofocus: true,
+                input_html: { autocomplete: "address" }%>
     <%= f.input :email,
                 required: true,
                 autofocus: true,
@@ -33,7 +37,7 @@
   </div>
 
   <div class="form-actions">
-    <%= f.button :submit, "Sign up" %>
+    <%= f.button :submit, "Sign up", class: "btn btn-primary float-right" %>
   </div>
 <% end %>
 
