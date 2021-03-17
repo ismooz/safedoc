@@ -1,0 +1,16 @@
+<!-- display breadcrumb -->
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <!-- root -->
+    <li class="breadcrumb-item">
+      <a href="<%= folders_path %>"><i class="fas fa-home fa"></i></a>
+    </li>
+    <!-- other items -->
+    <% @breadcrumb.each_with_index do |folder, index| %>
+      <li class="breadcrumb-item"><a href="<%= folder_path(folder) %>"><%= folder.name %></a></li>
+    <% end %>
+    <li class="breadcrumb-item active" aria-current="page"><%= @document.name %></li>
+  </ol>
+</nav>
+
+<%= @document.name %>
