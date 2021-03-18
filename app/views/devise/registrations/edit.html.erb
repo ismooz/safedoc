@@ -10,6 +10,25 @@
       <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
     <% end %>
 
+    <%= f.input :first_name,
+                required: true,
+                autofocus: true,
+                input_html: { autocomplete: "first name" }%>
+    <%= f.input :last_name,
+                required: true,
+                autofocus: true,
+                input_html: { autocomplete: "last name" }%>
+    <%= f.input :birthdate,
+                as: :string,
+                required: false, input_html: {class: "datepicker"} %>
+    <%= f.input :address,
+                required: true,
+                autofocus: true,
+                input_html: { autocomplete: "address" }%>
+    <%= f.input :profile_image,
+                required: false,
+                input_html: { autocomplete: "profile image" },
+                as: :file %>
     <%= f.input :password,
                 hint: "leave it blank if you don't want to change it",
                 required: false,
