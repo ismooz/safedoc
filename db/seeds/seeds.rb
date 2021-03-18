@@ -33,11 +33,11 @@ folder_1 = { name: "Privé" }
 folder_2 = { name: "Ménage" }
 folder_3 = { name: "Professionnel" }
 
-folder_4 = { name: "Privé level 2", folder_id: 1}
+folder_4 = { name: "Privé level 2", folder_id: }
 puts "...."
-folder_5 = { name: "Ménage level 2", folder_id: 2}
+folder_5 = { name: "Ménage level 2", folder_id: }
 puts "...."
-folder_6 = { name: "Professionnel level 2", folder_id: 3}
+folder_6 = { name: "Professionnel level 2", folder_id: }
 puts "...."
 
 [folder_1, folder_2, folder_3, folder_4, folder_5, folder_6].each do |attributes|
