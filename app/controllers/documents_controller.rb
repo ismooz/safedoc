@@ -9,8 +9,10 @@ class DocumentsController < ApplicationController
     # breadcrumb
     breadcrumb = []
     @breadcrumb = generate_breadcrumb(folder, breadcrumb)
-    
+
   end
+
+  
 
   private
 

@@ -38,5 +38,5 @@ class FoldersController < ApplicationController
       generate_breadcrumb(parent_folder, arr)
     end
   end
-
 end
+
