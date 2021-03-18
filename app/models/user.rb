@@ -8,4 +8,14 @@ class User < ApplicationRecord
   has_many :folders
   has_many :types
 
+  has_one_attached :profile_image
+
+
+  # validations
+  validates :first_name, presence: true
+  validates :last_name, presence: true
+  validates :birthdate, presence: true
+  validates :address, presence: true
+  validates :profile_image, presence: true
+
 end
