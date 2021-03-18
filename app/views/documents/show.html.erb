@@ -21,12 +21,12 @@
     <div class="card-body">
       <p class="card-text">Name: <%= @document.name %></p>
       <p class="card-text">Deadline: <%= @document.deadline %></p>
-      <p class="card-text">Pages: <%= @document.photos.size %></p>
       <!-- preview -->
-      <div class="card" style="width: 25rem;">
+      <div class="card photo">
         <%= cl_image_tag(@document.photos.first.key, :gravity=>"auto", :width=>400, :aspect_ratio=>"16:9", :crop=>"fill", class: "card-img-top") %>
-        <div class="card-body">
-          <p class="card-text">Last updated: <%= @document.updated_at %></p>
+        <div class="card-body top-solid">
+          <p class="card-text"><%= @document.updated_at.strftime("Last updated: %d %B %Y") %></p>
+          <p class="card-text">Pages: <%= @document.photos.size %></p>
           <a href="#" class="btn btn-primary">Downlaod document</a>
         </div>
       </div>
