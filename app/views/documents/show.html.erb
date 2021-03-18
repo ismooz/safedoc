@@ -12,5 +12,25 @@
     <li class="breadcrumb-item active" aria-current="page"><%= @document.name %></li>
   </ol>
 </nav>
+<!-- end display breadcrumb -->
 
-<%= @document.name %>
+<!-- start display card -->
+<div class="container">
+  <div class="card">
+    <h5 class="card-header">Document details</h5>
+    <div class="card-body">
+      <p class="card-text">Name: <%= @document.name %></p>
+      <p class="card-text">Deadline: <%= @document.deadline %></p>
+      <p class="card-text">Pages: <%= @document.photos.size %></p>
+      <!-- preview -->
+      <div class="card" style="width: 25rem;">
+        <%= cl_image_tag(@document.photos.first.key, :gravity=>"auto", :width=>400, :aspect_ratio=>"16:9", :crop=>"fill", class: "card-img-top") %>
+        <div class="card-body">
+          <p class="card-text">Last updated: <%= @document.updated_at %></p>
+          <a href="#" class="btn btn-primary">Downlaod document</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- end display breadcrumb -->
