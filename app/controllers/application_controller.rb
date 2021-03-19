@@ -28,4 +28,20 @@ class ApplicationController < ActionController::Base
   def skip_pundit?
     devise_controller? || params[:controller] =~ /(^(rails_)?admin)|(^pages$)/
   end
+
+    # we give a folder object as input. the method stops when Folder object as a nil parent_id
+  # in this case we are at the root folder. Recursive function :
+  def generate_breadcrumb(folder, arr = [])
+    if folder.parent_id.nil?
+      arr.unshift(folder)
+    else
+      # we add current id in first position
+      arr.unshift(folder)
+      # we get the parent folder
+      parent_folder = Folder.find(folder.parent_id)
+      # we call the function with parent folder
+      generate_breadcrumb(parent_folder, arr)
+    end
+  end
+  
 end
