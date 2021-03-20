@@ -34,6 +34,8 @@ gem 'devise'
 # Authorization
 gem 'pundit'
 
+gem 'bootstrap', '~> 5.0.0.beta2'
+
 gem 'autoprefixer-rails'
 gem 'font-awesome-sass'
 gem 'simple_form'
