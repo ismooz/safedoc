@@ -29,7 +29,7 @@
         <div class="card-body top-solid">
           <p class="card-text"><%= @updated_at %></p>
           <p class="card-text">Pages: <%= @pages %></p>
-          <a href="<%= cloudinary_url(@download_key) %>" class="btn btn-primary">Downlaod document</a>
+          <a href="<%= cloudinary_url(@download_key, :flags => "attachment") %>" class="btn btn-primary">Downlaod document</a>
         </div>
       </div>
     </div>
