@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_13_184159) do
+ActiveRecord::Schema.define(version: 2021_03_18_200621) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -59,10 +59,10 @@ ActiveRecord::Schema.define(version: 2021_03_13_184159) do
 
   create_table "folders", force: :cascade do |t|
     t.string "name"
-    t.bigint "parent_id"
+    t.bigint "folder_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["parent_id"], name: "index_folders_on_parent_id"
+    t.index ["folder_id"], name: "index_folders_on_folder_id"
   end
 
   create_table "types", force: :cascade do |t|
@@ -92,5 +92,5 @@ ActiveRecord::Schema.define(version: 2021_03_13_184159) do
   add_foreign_key "document_types", "types"
   add_foreign_key "documents", "folders"
   add_foreign_key "documents", "users"
-  add_foreign_key "folders", "folders", column: "parent_id"
+  add_foreign_key "folders", "folders"
 end
