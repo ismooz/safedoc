@@ -66,9 +66,29 @@ Dir.glob(images_path + "/*").each do |f|
 
 
   document = Document.new(name: "#{filename_wo_extension}", deadline: "2022/02/15", reminder: "2022/02/05", user_id: User.first.id, folder_id: Folder.first.id)
+  
+  # definition, variable
+  first = Hash.new
+  first[:key] = "1"
+  first[:url] = "https://res.cloudinary.com/ismooz/image/upload/v1615642798/bp4jixnmmbdbwzypmh29.jpg"
+  first[:extension] = "image/jpg"
+  current = first
 
-  # document.image.attach(io: file, filename: filename, content_type: 'application/pdf')
+  # insertion, fix
+  file = URI.open(current[:url])
+  document.photos.attach(io: file, filename: "#{filename_wo_extension}_page#{current[:key]}", content_type: current[:extension])
+  document.save!
 
+  # definition, variable
+  second = Hash.new
+  second[:key] = "2"
+  second[:url] = "https://res.cloudinary.com/ismooz/image/upload/v1616085330/pw05d3nfn4is22ia0flbjzz1qyd4.png"
+  second[:extension] = "image/png"
+  current = second
+
+  # insertion, fix
+  file = URI.open(current[:url])
+  document.photos.attach(io: file, filename: "#{filename_wo_extension}_page#{current[:key]}", content_type: current[:extension])
   document.save!
 
   Cloudinary::Uploader.upload("#{images_path}/#{filename}",
