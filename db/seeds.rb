@@ -80,18 +80,3 @@ Dir.glob(images_path + "/*").each do |f|
 end
 
 puts "Documents finished!"
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
