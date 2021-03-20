@@ -15,8 +15,6 @@ User.destroy_all
 puts "destroy user"
 
 
-
-
 puts "Creating users..."
 
 user_1 = User.create(email: "ismael@email.com",  password: "123456")
@@ -80,4 +78,3 @@ Dir.glob(images_path + "/*").each do |f|
 end
 
 puts "Documents finished!"
-
