@@ -17,9 +17,9 @@ puts "destroy user"
 
 puts "Creating users..."
 
-user_1 = User.create(email: "ismael@email.com",  password: "123456")
-user_2 = User.create(email: "ivan@email.com",  password: "123456")
-user_3 = User.create(email: "antoine@email.com",  password: "123456")
+user_1 = User.create(email: "ismael@email.com",  password: "123456", first_name: "FFF", last_name: "LLL", birthdate: "2022-02-15", address: "bbbbbbbbb")
+user_2 = User.create(email: "ivan@email.com",  password: "123456", first_name: "FFF", last_name: "LLL", birthdate: "2022-02-15", address: "bbbbbbbbb")
+user_3 = User.create(email: "antoine@email.com",  password: "123456", first_name: "FFF", last_name: "LLL", birthdate: "2022-02-15", address: "bbbbbbbbb")
 
 puts "Creating folders..."
 
@@ -65,7 +65,7 @@ Dir.glob(images_path + "/*").each do |f|
   puts file
 
 
-  document = Document.new(name: "assurance vie", deadline: "2022/02/15", reminder: "2022/02/05", user_id: User.first.id, folder_id: Folder.first.id)
+  document = Document.new(name: "#{filename_wo_extension}", deadline: "2022/02/15", reminder: "2022/02/05", user_id: User.first.id, folder_id: Folder.first.id)
 
   # document.image.attach(io: file, filename: filename, content_type: 'application/pdf')
 

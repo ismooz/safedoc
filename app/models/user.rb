@@ -16,6 +16,6 @@ class User < ApplicationRecord
   validates :last_name, presence: true
   validates :birthdate, presence: true
   validates :address, presence: true
-  validates :profile_image, presence: true
+  # validates :profile_image, presence: true
 
 end
