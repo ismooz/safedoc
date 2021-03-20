@@ -35,4 +35,5 @@ document.addEventListener('turbolinks:load', () => {
    // initSelect2();
    openFolder();
    initFlatpickr();
+
  });

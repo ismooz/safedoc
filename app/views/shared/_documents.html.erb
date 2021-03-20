@@ -1,6 +1,7 @@
 <% @documents.each do |document| %>
-  <tr class="pointer-cursor" data-link="#">
+  <tr class="pointer-cursor" data-link="<%= document_path(document) %>">
     <td class="text-secondary icon-column-width"><i class="far fa-file-alt fa-2x align-document"></i></td>
     <td class="align-text-vertical"><%= document.name %></td>
   </tr>
 <% end %>
+
