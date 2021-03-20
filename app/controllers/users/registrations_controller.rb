@@ -27,6 +27,13 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # PUT /resource
   def update
     super
+    @user= current_user
+    if @user.update_attributes(configure_account_update_params)
+
+    else
+    render 'edit'
+    end
+
   end
 
   # DELETE /resource
