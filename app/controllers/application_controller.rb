@@ -2,6 +2,7 @@ class ApplicationController < ActionController::Base
   before_action :authenticate_user!
 
   before_action :configure_permitted_parameters, if: :devise_controller?
+  before_action :configure_account_update_params, if: :devise_controller?
 
 
   include Pundit
@@ -21,6 +22,10 @@ class ApplicationController < ActionController::Base
 
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: [:first_name, :last_name, :birthdate, :address, :profile_image])
+  end
+
+  def configure_account_update_params
+    devise_parameter_sanitizer.permit(:account_update, keys: [:first_name, :last_name, :birthdate, :address, :profile_image])
   end
 
   private
@@ -43,5 +48,5 @@ class ApplicationController < ActionController::Base
       generate_breadcrumb(parent_folder, arr)
     end
   end
-  
+
 end
