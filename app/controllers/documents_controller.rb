@@ -18,4 +18,11 @@ class DocumentsController < ApplicationController
     @pages = @document.photos.size
     @download_key = @document.photos.last.key
   end
+
+  def new
+    @document = Document.new
+    authorize @document
+    @types = Type.all.order('name ASC')
+  end
+
 end
