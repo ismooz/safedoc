@@ -18,4 +18,28 @@ class DocumentsController < ApplicationController
     @pages = @document.photos.size
     @download_key = @document.photos.last.key
   end
+
+  def new
+    @document = Document.new
+    authorize @document
+    @types = Type.all.order('name ASC')
+  end
+
+  def create
+    @document = Document.new(document_params) # pquoi ça marche alors que ce n'est pas un string
+    authorize @document
+
+    if @document.save
+      redirect_to @document
+    else
+      render :new # il faut render pour afficher le message d'erreur
+    end
+  end
+
+  private
+
+  def document_params
+    params.require(:document).permit(:folder, :types, :deadline, :reminder, :photos, :name)
+  end
+
 end

@@ -1,0 +1,31 @@
+.tag-item {
+  display: inline-block;
+}
+
+.tag-selector {
+  position: absolute;
+  transform: scale(0);
+}
+
+.tag-selector + label {
+  cursor: pointer;
+  display: inline-block;
+  font-size: 0.9rem;
+  border-radius: 50rem;
+  padding: 0.25rem 0.6rem;
+  background-color: $m-blue;;
+  color: $h-turquoise;
+  margin-right: 0.6rem;
+  margin-bottom: 0.4rem;
+}
+
+.tag-selector:checked + label {
+  background-color: $turquoise;
+  color: white;
+}
+
+$d-blue: #0b132b;
+$m-blue: #1c2541;
+$h-blue: #3a506b;
+$turquoise: #5bc0be;
+$h-turquoise: #6fffe9;
