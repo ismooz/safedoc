@@ -1,37 +1,18 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
-
-<div class="container pt-3 border">
+<div class="container pt-5">
   <div class="row">
-
-    <div class="card-product">
-      <div>
-        <h2><%= @name%></h2>
-        <%=image_tag("doc_samples/Assurance_bateau.jpeg", class: "grow shadow")%>
-        <div class="card-product-infos">
-           <p>Product description with <strong>relevant info</strong> only.</p>
+    <% @document.each do |doc| %>
+      <div class="col-xs-12 col-md-6 col-lg-4">
+        <div class="card-trip">
+          <%= link_to doc do %>
+            <%= cl_image_tag(doc.photos.first.key, height: 250) %>
+          <% end %>
+          <div class="card-trip-infos">
+            <div>
+              <h2><%= doc.name %></h2>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-
-    <div class="card-product">
-      <div>
-        <h2>Card 3</h2>
-        <%=image_tag("doc_samples/Assurance_bateau.jpeg", class: "grow shadow")%>
-        <div class="card-product-infos">
-           <p>Product description with <strong>relevant info</strong> only.</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="card-product">
-      <div>
-        <h2>Card 3</h2>
-        <%=image_tag("doc_samples/Assurance_bateau.jpeg", class: "grow shadow")%>
-        <div class="card-product-infos">
-           <p>Product description with <strong>relevant info</strong> only.</p>
-        </div>
-      </div>
-    </div>
+    <% end %>
   </div>
 </div>
