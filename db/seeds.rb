@@ -50,9 +50,9 @@ puts "Creating documents..."
 require 'open-uri'
 require 'nokogiri'
 
-# # path of images (relative)
-# images_path = File.expand_path(".", Dir.pwd) + "/app/assets/images/doc_samples"
-# puts images_path
+# path of images (relative)
+images_path = File.expand_path(".", Dir.pwd) + "/app/assets/images/doc_samples"
+puts images_path
 
 Dir.glob(images_path + "/*").each do |f|
   filename_wo_extension = File.basename(f, ".pdf")
@@ -64,9 +64,9 @@ Dir.glob(images_path + "/*").each do |f|
   file = File.open(filepath)
   puts file
 
-
+puts "test 1"
   document = Document.new(name: "#{filename_wo_extension}", deadline: "2022/02/15", reminder: "2022/02/05", user_id: User.first.id, folder_id: Folder.first.id)
-
+puts "test 2"
   # definition, variable
   first = Hash.new
   first[:key] = "1"

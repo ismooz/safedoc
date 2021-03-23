@@ -1,18 +1,63 @@
-<div class="container pt-5">
-  <div class="row">
-    <% @document.each do |doc| %>
-      <div class="col-xs-12 col-md-6 col-lg-4">
-        <div class="card-trip">
-          <%= link_to doc do %>
-            <%= cl_image_tag(doc.photos.first.key, height: 250) %>
-          <% end %>
-          <div class="card-trip-infos">
-            <div>
-              <h2><%= doc.name %></h2>
+
+<% if user_signed_in? %>
+  <div class="container pt-5">
+    <h2>My last documents saved</h2>
+    <p>
+    <div class="row">
+      <% @document.each do |doc| %>
+        <div class="col-xs-12 col-md-6 col-lg-4">
+          <div class="card-trip">
+            <%= link_to doc do %>
+              <div>
+                <h5><%= doc.name %></h5>
+              </div>
+              <%= cl_image_tag(doc.photos.first.key, height: 200) %>
+            <% end %>
+             <div>
+                <h6><%= "Expiration date #{doc.deadline}" %></h6>
+              </div>
+            <div class="card-trip-infos">
             </div>
           </div>
         </div>
-      </div>
-    <% end %>
+      <% end %>
+    </div>
   </div>
-</div>
+
+  <!-- <div class="container pt-5">
+    <h2>Next upcoming deadlines</h2>
+    <p>
+    <div class="row">
+      <% @document.each do |doc| %>
+        <div class="col-xs-12 col-md-6 col-lg-4">
+          <div class="card-trip">
+            <%= link_to doc do %>
+              <div>
+                <h5><%= doc.name %></h5>
+              </div>
+              <%= cl_image_tag(doc.photos.first.key, height: 200) %>
+            <% end %>
+             <div>
+                <h6><%= "Expiration date #{doc.deadline}" %></h6>
+              </div>
+            <div class="card-trip-infos">
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div> -->
+
+  <% else %>
+
+  <div class="container pt-5">
+    <div class="row">
+      <h2>Need help keeping track with paperwork</h2>
+      <div> <%= "Safedoc is an app deigned to help you keep all your important documents at the same place and healp you manage your contract's deadlines" %> <div/>
+    </div>
+  </div>
+
+
+      <% end %>
+
+
