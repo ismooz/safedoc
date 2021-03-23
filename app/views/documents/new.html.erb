@@ -4,7 +4,7 @@
       <h2>New document</h2>
       <!-- form to add a new document -->
         <%= simple_form_for [@document] do |f| %>
-            <%= f.association :folder, as: :select,
+            <%= f.association :folder, as: :select, include_blank: false,
                 input_html: { class: "select2" } %>
 
             <%= f.association :type, collection: @types, as: :check_boxes,
