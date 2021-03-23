@@ -3,30 +3,35 @@
 
 <div class="container pt-3 border">
   <div class="row">
-    <div class="card-category" style="background-image: linear-gradient(rgba(30,144,255,0.5), rgba(240,255,255,0.5))">
-      <%= link_to "New document", "#", class: "btn btn-ghost" %>
-
-    </div>
-
-   <div class="card-category" style="background-image: linear-gradient(rgba(30,144,255,0.5), rgba(240,255,255,0.5))">
-      Card 2
-    </div>
-
-
-
-
 
     <div class="card-product">
-      <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
-      <div class="card-product-infos">
-        <h2>Card 3</h2>
-        <p>Product description with <strong>relevant info</strong> only.</p>
+      <div>
+        <h2><%= @name%></h2>
+        <%=image_tag("doc_samples/Assurance_bateau.jpeg", class: "grow shadow")%>
+        <div class="card-product-infos">
+           <p>Product description with <strong>relevant info</strong> only.</p>
+        </div>
       </div>
     </div>
 
+    <div class="card-product">
+      <div>
+        <h2>Card 3</h2>
+        <%=image_tag("doc_samples/Assurance_bateau.jpeg", class: "grow shadow")%>
+        <div class="card-product-infos">
+           <p>Product description with <strong>relevant info</strong> only.</p>
+        </div>
+      </div>
+    </div>
 
-
-
+    <div class="card-product">
+      <div>
+        <h2>Card 3</h2>
+        <%=image_tag("doc_samples/Assurance_bateau.jpeg", class: "grow shadow")%>
+        <div class="card-product-infos">
+           <p>Product description with <strong>relevant info</strong> only.</p>
+        </div>
+      </div>
+    </div>
   </div>
-
 </div>
