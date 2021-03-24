@@ -13,19 +13,14 @@
   font-size: 0.9rem;
   border-radius: 50rem;
   padding: 0.25rem 0.6rem;
-  background-color: $m-blue;;
-  color: $h-turquoise;
+  // border: solid 1px $m-blue;
+  color: $turquoise;
   margin-right: 0.6rem;
   margin-bottom: 0.4rem;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
 }
 
 .tag-selector:checked + label {
   background-color: $turquoise;
   color: white;
 }
-
-$d-blue: #0b132b;
-$m-blue: #1c2541;
-$h-blue: #3a506b;
-$turquoise: #5bc0be;
-$h-turquoise: #6fffe9;
