@@ -1,28 +1,46 @@
 <div class="container">
   <div class="row justify-content-center">
-    <div class="col-xs-12 col-sm-8 col-md-6">
-      <h2>New document</h2>
-      <!-- form to add a new document -->
+    <div class="col-sm-6">
+      <div>
+        <h2>Add new doc</h2>
+        <!-- form to add a new document -->
         <%= simple_form_for [@document] do |f| %>
-            <%= f.association :folder, as: :select,
-                input_html: { class: "select2" } %>
-
-            <%= f.association :type, collection: @types, as: :check_boxes,
-                input_html: { class: "tag-selector" }, item_wrapper_class: 'tag-item' %>
-
-            <%= f.input :deadline, as: :string, required: true,
-                input_html: {class: "datepicker"} %>
-
-            <%= f.input :reminder, as: :string, required: true,
-                input_html: {class: "datepicker"} %>
-
-            <%= f.input :photos, as: :file,
-                input_html: { multiple: true } %>
-
-            <%= f.input :name %>
-
-            <%= f.button :submit, class: "btn btn-primary mb" %>
+        <table class="table">
+          <tr>
+            <th>Take a picture or upload a file</th>
+            <td><%= f.input :photos, as: :file, label: false,
+              input_html: { multiple: true } %></td>
+          </tr>
+          <tr>
+            <th>Chose a folder</th>
+            <td><%= f.association :folder, as: :select, label: false,
+              input_html: { class: "select2" } %></td>
+          </tr>
+          <tr>
+            <td colspan="2"><%= f.association :type, collection: @types, as: :check_boxes, label: false,
+              input_html: { class: "tag-selector" }, item_wrapper_class: 'tag-item' %></td>
+          </tr>
+          <tr>
+            <th>Deadline</th>
+            <td><%= f.input :deadline, as: :string, required: true, label: false,
+              input_html: {class: "datepicker"} %></td>
+          </tr>
+          <tr>
+            <th>Reminder</th>
+            <td><%= f.input :reminder, as: :string, required: false, label: false,
+              input_html: {class: "datepicker"} %></td>
+          </tr>
+          <tr>
+            <th>Chose a name</th>
+            <td><%= f.input :name, label: false %></td>
+          </tr>
+        </table>
+          <%= f.button :submit, class: "btn btn-primary btn-lg btn-block" %>
         <% end %>
+      </div>
+    </div>
+  </div>
+</div>
 
 
 <!-- reminder_date = document.getElementById("document_reminder").value

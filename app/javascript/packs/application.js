@@ -25,6 +25,7 @@ require("channels")
 // External imports
 import "bootstrap";
 import { openFolder } from '../components/folder';
+import { sidebar } from '../components/sidebar';
 import { initFlatpickr } from "../plugins/flatpickr";
 import { initSelect2 } from '../plugins/init_select2';
 
@@ -34,6 +35,7 @@ document.addEventListener('turbolinks:load', () => {
    // Call your functions here, e.g:
    // initSelect2();
    openFolder();
+   sidebar();
    initFlatpickr();
    initSelect2();
  });
