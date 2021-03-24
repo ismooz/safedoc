@@ -14,7 +14,7 @@
               <%= cl_image_tag(doc.photos.first.key, height: 200) %>
             <% end %>
              <div>
-                <h6><%= "Expiration date #{doc.deadline}" %></h6>
+          <!--       <h6><%= "Expiration date #{doc.deadline}" %></h6> -->
               </div>
             <div class="card-trip-infos">
             </div>
@@ -28,18 +28,18 @@
     <h2>Next upcoming deadlines</h2>
     <p>
     <div class="row">
-      <% @document_per_deadline.each do |doc| %>
+      <% @docu_ddl.each do |doc| %>
         <div class="col-xs-12 col-md-6 col-lg-4">
           <div class="card-trip">
             <%= link_to doc do %>
               <div>
-                <h6><%= doc.name %></h6>
+                <h5><%= doc.name %></h5>
+              </div>
+               <div>
+                <h5><%= "Expiration date #{doc.deadline}" %></h5>
               </div>
               <%= cl_image_tag(doc.photos.first.key, height: 200) %>
             <% end %>
-             <div>
-                <h5><%= "Expiration date #{doc.deadline}" %></h5>
-              </div>
             <div class="card-trip-infos">
             </div>
           </div>
