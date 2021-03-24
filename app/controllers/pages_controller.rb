@@ -4,6 +4,8 @@ class PagesController < ApplicationController
   def home
     @document = Document.all.take(3)
 
+    @docuPerDeadline = Document.sort_by
+
     # @ddl =[]
 
     # @ddl << @deadlines
