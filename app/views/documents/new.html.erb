@@ -4,8 +4,23 @@
       <h2>New document</h2>
       <!-- form to add a new document -->
         <%= simple_form_for @document do |f| %>
-            <%= f.association :folder, as: :select, include_blank: false,
-                input_html: { class: "select2" } %>
+        <!-- avec une association, fonctionnel :
+            <%= f.association :folder, include_blank: false,
+                input_html: { id: "folders" } %>
+             si on utilise pas l'association, et qu'on passe les données via un array
+                 on doit passer le champ précis, folder_id  
+            <%= f.input :folder_id, as: :select,
+                input_html: {id: "folders2"} %>
+                on peut aussi passer les valeurs via une collection au lieu d'une association,
+                par exempel comme ceci : 
+                <%= f.input :folder, as: :select, collection: @folders %>
+
+            <%= f.input :folder_id, as: :select, collection: @folders, include_blank: true,
+                input_html: { id: "folders" } %>
+         -->
+
+            <%= f.association :folder, include_blank: true,
+                input_html: { id: "folders" } %>
 
             <%= f.association :types, as: :check_boxes, required: true,
                 input_html: { class: "tag-selector" }, item_wrapper_class: 'tag-item' %>
