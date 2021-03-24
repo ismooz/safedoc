@@ -1,0 +1,156 @@
+// /* The side navigation menu */
+// .sidebar {
+//   margin: 0;
+//   padding: 0;
+//   width: 80px;
+//   background-color: $m-blue;
+//   position: fixed;
+//   height: 100%;
+//   overflow: auto;
+// }
+
+// /* Sidebar links */
+// .sidebar a {
+//   display: block;
+//   color: $turquoise;
+//   padding: 16px;
+//   text-decoration: none;
+// }
+
+// /* Active/current link */
+// .sidebar a.active {
+//   color: white;
+// }
+
+// /* Links on mouse-over */
+// .sidebar a:hover:not(.active) {
+//   background-color: $h-blue;
+// }
+
+// /* Page content. The value of the margin-left property should match the value of the sidebar's width property */
+// div.content {
+//   margin-left: 200px;
+//   padding: 1px 16px;
+//   height: 1000px;
+// }
+
+// /* On screens that are less than 700px wide, make the sidebar into a topbar */
+// @media screen and (max-width: 700px) {
+//   .sidebar {
+//     width: 100%;
+//     height: auto;
+//     position: relative;
+//   }
+//   .sidebar a {float: left;}
+//   div.content {margin-left: 0;}
+// }
+
+// /* On screens that are less than 400px, display the bar vertically, instead of horizontally */
+// @media screen and (max-width: 400px) {
+//   .sidebar a {
+//     text-align: center;
+//     float: none;
+//   }
+// }
+
+.wrapper {
+  width: 100%;
+  height: 100vh;
+}
+
+#sidebar {
+  min-width: 200px;
+  max-width: 200px;
+  background: $m-blue;
+  color: #fff;
+  transition: all .8s;
+  position: relative;
+  z-index: 1;
+  margin-right: 30px;
+  margin-left: -200px;
+  .h6{
+    color: $white;
+  }
+  &.active{
+    margin-left: 0px;
+  }
+  h1{
+    margin-bottom: 20px;
+    font-weight: 700;
+    font-size: 30px;
+    .logo{
+      color: $white;
+      span{
+        font-size: 14px;
+        color: $secondary;
+        display: block;
+      }
+    }
+  }
+  ul.components{
+    padding: 0;
+  }
+  ul{
+    li{
+      font-size: 16px;
+      >ul{
+        margin-left: 10px;
+        li{
+          font-size: 14px;
+        }
+      }
+      a{
+        padding: 10px 0;
+        display: block;
+        color: rgba(255,255,255,.6);
+        border-bottom: 1px solid rgba(255,255,255,.1);
+        span{
+          color: $secondary;
+        }
+        &:hover{
+          color: $white;
+        }
+      }
+
+    }
+  }
+
+  .custom-menu{
+    display: inline-block;
+    position: absolute;
+    top: 30%;
+    right: 0;
+    margin-right: -35px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    @include transition(.8s);
+    .btn{
+      width: 60px;
+      height: 60px;
+      position: relative;
+      i{
+        margin-right: -20px;
+        font-size: 18px;
+      }
+      &.btn-primary{
+        background: transparent;
+        border-color: transparent;
+        &:after{
+          z-index: -1;
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          content: '';
+          background: $m-blue;
+          border-radius: 10px;
+        }
+        &:hover, &:focus{
+          background: transparent !important;
+          border-color: transparent !important;
+        }
+      }
+    }
+  }
+}
+
