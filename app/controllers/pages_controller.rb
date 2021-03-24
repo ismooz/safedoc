@@ -4,7 +4,11 @@ class PagesController < ApplicationController
   def home
     @document = Document.all.take(3)
 
-    @docuPerDeadline = Document.sort_by
+    docu_ddl = @document.sort_by { |doc| [doc.deadline]}
+
+    @document_per_deadline = docu_ddl.take(3)
+
+
 
     # @ddl =[]
 
