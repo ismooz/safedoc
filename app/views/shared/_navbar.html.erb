@@ -1,5 +1,5 @@
 <div class="navbar navbar-dark navbar-expand-sm navbar-light navbar-lewagon">
-  <%= link_to "#", class: "navbar-brand" do %>
+  <%= link_to root_path, class: "navbar-brand" do %>
     <%= image_tag "logo_safedoc.png" %>
     <% end %>
 
@@ -34,7 +34,19 @@
         </li>
       <% else %>
         <li class="nav-item">
-          <%= link_to "Login", new_user_session_path, class: "nav-link text-white" %>
+          <%= link_to "Home", root_path, class: "nav-link text-info" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "Pricing", new_document_path, class: "nav-link text-info" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "About us", folders_path, class: "nav-link text-info mr-5" %>
+        </li>
+        <li>
+          <%= link_to "Login", new_user_session_path, class: "btn btn-outline-info mr-2" %>
+        </li>
+        <li>
+          <%= link_to "Sign up", new_user_registration_path, class: "btn btn-outline-info mr-2" %>
         </li>
       <% end %>
     </ul>

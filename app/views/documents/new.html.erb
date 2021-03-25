@@ -1,14 +1,15 @@
 <div class="container">
   <div class="row justify-content-center">
-    <div class="col-sm-6">
+    <div class="col-sm-6 form">
       <div>
+        <h2>Add a new doc</h2>
         <!-- form to add a new document -->
         <%= simple_form_for @document do |f| %>
         <table class="table">
           <tr>
             <th>Upload or Scan</th>
             <td>
-              <label class="btn btn-primary">Choose file...
+              <label class="btn btn-secondary">Choose file...
                 <span style="display:none;">
                   <%= f.input :photos, as: :file, label: false,
                         input_html: { multiple: true } %>
@@ -23,7 +24,7 @@
           </tr>
           <tr>
             <td colspan="2"><%= f.association :types, as: :check_boxes, label: false,
-                required: true, 
+                required: true,
                 input_html: { class: "tag-selector" }, item_wrapper_class: 'tag-item' %></td>
           </tr>
           <tr>
@@ -41,7 +42,7 @@
             <td><%= f.input :name, label: false %></td>
           </tr>
         </table>
-          <%= f.button :submit, class: "btn btn-primary btn-lg btn-block" %>
+          <%= f.button :submit, class: "btn btn-info btn-lg btn-block" %>
         <% end %>
       </div>
     </div>
