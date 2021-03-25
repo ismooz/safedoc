@@ -1,32 +1,58 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
 
-<div class="container pt-3 border">
-  <div class="row">
-    <div class="card-category" style="background-image: linear-gradient(rgba(30,144,255,0.5), rgba(240,255,255,0.5))">
-      <%= link_to "New document", "#", class: "btn btn-ghost" %>
-
+<% if user_signed_in? %>
+  <div class="container pt-5">
+    <h2>My last documents saved</h2>
+    <p>
+    <div class="row">
+      <% @document.each do |doc| %>
+        <div class="col-xs-12 col-md-6 col-lg-4">
+          <div class="card-trip">
+            <%= link_to doc do %>
+              <div>
+                <h5><%= doc.name %></h5>
+              </div>
+              <%= cl_image_tag(doc.photos.first.key, height: 200) %>
+            <% end %>
+            <div class="card-trip-infos">
+            </div>
+          </div>
+        </div>
+      <% end %>
     </div>
-
-   <div class="card-category" style="background-image: linear-gradient(rgba(30,144,255,0.5), rgba(240,255,255,0.5))">
-      Card 2
-    </div>
-
-
-
-
-
-    <div class="card-product">
-      <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
-      <div class="card-product-infos">
-        <h2>Card 3</h2>
-        <p>Product description with <strong>relevant info</strong> only.</p>
-      </div>
-    </div>
-
-
-
-
   </div>
 
-</div>
+  <div class="container pt-5">
+    <h2>Next upcoming deadlines</h2>
+    <p>
+    <div class="row">
+      <% @docu_ddl.each do |doc| %>
+        <div class="col-xs-12 col-md-6 col-lg-4">
+          <div class="card-trip">
+            <%= link_to doc do %>
+              <div>
+                <h5><%= doc.name %></h5>
+              </div>
+               <div>
+                <h5><%= "Expiration date #{doc.deadline}" %></h5>
+              </div>
+              <%= cl_image_tag(doc.photos.first.key, height: 200) %>
+            <% end %>
+            <div class="card-trip-infos">
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <% else %>
+
+  <div class="container pt-5">
+    <div class="row">
+      <h2>Need help keeping track with paperwork</h2>
+      <div> <%= "Safedoc is an app deigned to help you keep all your important documents at the same place and healp you manage your contract's deadlines" %> <div/>
+    </div>
+  </div>
+  <% end %>
+
+
