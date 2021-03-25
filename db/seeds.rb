@@ -72,7 +72,7 @@ Dir.glob(images_path + "/*").each do |f|
   file = File.open(filepath)
   puts file
 
-  deadline_date = deadline_date.sample
+  deadline_date = deadline_date.shuffle.first
 
 puts "test 1"
   document = Document.new(name: "#{filename_wo_extension}", deadline: deadline_date, reminder: "2022/02/05", user_id: User.first.id, folder_id: Folder.first.id)
