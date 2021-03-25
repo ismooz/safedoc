@@ -74,16 +74,13 @@ Dir.glob(images_path + "/*").each do |f|
 
   # deadline_date = deadline_date.shuffle.first
 
-puts "test 1"
   document = Document.new(name: "#{filename_wo_extension}", deadline: "2024/11/22", reminder: "2022/02/05", user_id: User.first.id, folder_id: Folder.first.id)
-puts "test 2"
   # definition, variable
   first = Hash.new
   first[:key] = "1"
   first[:url] = "https://res.cloudinary.com/ismooz/image/upload/v1615642798/bp4jixnmmbdbwzypmh29.jpg"
   first[:extension] = "image/jpg"
   current = first
-
 
 
   # insertion, fix
