@@ -56,11 +56,11 @@ puts "Creating documents..."
 images_path = File.expand_path(".", Dir.pwd) + "/app/assets/images/doc_samples"
 puts images_path
 
-date_1 = "2022/02/15"
-date_2 = "2023/07/11"
-date_3 = "2024/11/22"
+# date_1 = "2022/02/15"
+# date_2 = "2023/07/11"
+# date_3 = "2024/11/22"
 
-deadline_date = [date_1, date_2, date_3]
+# deadline_date = [date_1, date_2, date_3]
 
 Dir.glob(images_path + "/*").each do |f|
   filename_wo_extension = File.basename(f, ".pdf")
@@ -72,10 +72,10 @@ Dir.glob(images_path + "/*").each do |f|
   file = File.open(filepath)
   puts file
 
-  deadline_date = deadline_date.shuffle.first
+  # deadline_date = deadline_date.shuffle.first
 
 puts "test 1"
-  document = Document.new(name: "#{filename_wo_extension}", deadline: deadline_date, reminder: "2022/02/05", user_id: User.first.id, folder_id: Folder.first.id)
+  document = Document.new(name: "#{filename_wo_extension}", deadline: "2024/11/22", reminder: "2022/02/05", user_id: User.first.id, folder_id: Folder.first.id)
 puts "test 2"
   # definition, variable
   first = Hash.new
