@@ -6,14 +6,20 @@
         <%= simple_form_for @document do |f| %>
         <table class="table">
           <tr>
-            <th>Take a picture or upload a file</th>
-            <td><%= f.input :photos, as: :file, label: false,
-              input_html: { multiple: true } %></td>
+            <th>Upload or Scan</th>
+            <td>
+              <label class="btn btn-primary">Choose file...
+                <span style="display:none;">
+                  <%= f.input :photos, as: :file, label: false,
+                        input_html: { multiple: true } %>
+                </span>
+              </label>
+            </td>
           </tr>
           <tr>
             <th>Choose a folder</th>
-            <td><%= f.association :folder, include_blank: true, label: false,
-                input_html: { id: "folders" } %></td>
+            <td><%= f.input :folder_id, collection: @folders,
+            include_blank: true, label: false, input_html: { id: "folders" } %></td>
           </tr>
           <tr>
             <td colspan="2"><%= f.association :types, as: :check_boxes, label: false,
@@ -41,8 +47,3 @@
     </div>
   </div>
 </div>
-
-
-<!-- reminder_date = document.getElementById("document_reminder").value
-    we just need to set a new value....
--->

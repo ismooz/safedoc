@@ -26,12 +26,12 @@ Folder.create(name: "Ménage", folder_id: folder_1.id)
 Folder.create(name: "Santé", folder_id: folder_1.id)
 Folder.create(name: "Administration", folder_id: folder_1.id)
 
-folder_2 = Folder.create(name: "Maison")
+folder_2 = Folder.create(name: "Professionnel")
+Folder.create(name: "Travail", folder_id: folder_2.id)
+Folder.create(name: "Formation", folder_id: folder_2.id)
+Folder.create(name: "Postulations", folder_id: folder_2.id)
 
-folder_3 = Folder.create(name: "Professionnel")
-Folder.create(name: "Travail", folder_id: folder_3.id)
-Folder.create(name: "Formation", folder_id: folder_3.id)
-Folder.create(name: "Postulations", folder_id: folder_3.id)
+folder_3 = Folder.create(name: "Autres")
 
 puts "Folders finished!"
 

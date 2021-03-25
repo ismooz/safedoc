@@ -22,6 +22,7 @@ class DocumentsController < ApplicationController
   def new
     @document = Document.new
     authorize @document
+    @folders = Folder.where(folder_id: nil)
   end
 
   def create
@@ -32,12 +33,7 @@ class DocumentsController < ApplicationController
     type_ids = params[:document][:type_ids]
     if @document.save
       type_ids.each do |type_id|
-        unless type_id.empty?
-          doctype = DocumentType.new
-          doctype.document = @document
-          doctype.type_id = type_id
-          doctype.save
-        end
+        save_doctype(type_id)
       end
       redirect_to @document
     else
@@ -50,6 +46,15 @@ class DocumentsController < ApplicationController
   def document_params
     # on doit donner les champs précis car c'est ce qui est passé en paramètre
     params.require(:document).permit(:folder_id, :deadline, :reminder, :name, photos: [])
+  end
+
+  def save_doctype(type_id)
+    unless type_id.empty?
+      doctype = DocumentType.new
+      doctype.document = @document
+      doctype.type_id = type_id
+      doctype.save
+    end
   end
 
 end
