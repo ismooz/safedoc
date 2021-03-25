@@ -17,7 +17,11 @@
   color: $turquoise;
   margin-right: 0.6rem;
   margin-bottom: 0.4rem;
-  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  &:hover {
+    box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    transition: 0.3s;
+  }
 }
 
 .tag-selector:checked + label {
