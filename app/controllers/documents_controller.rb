@@ -22,14 +22,19 @@ class DocumentsController < ApplicationController
   def new
     @document = Document.new
     authorize @document
-    @types = Type.all.order('name ASC')
+    @folders = Folder.where(folder_id: nil)
   end
 
   def create
-    @document = Document.new(document_params) # pquoi ça marche alors que ce n'est pas un string
+    @document = Document.new(document_params)
     authorize @document
-
+    @document.user = current_user
+    
+    type_ids = params[:document][:type_ids]
     if @document.save
+      type_ids.each do |type_id|
+        save_doctype(type_id)
+      end
       redirect_to @document
     else
       render :new # il faut render pour afficher le message d'erreur
@@ -39,7 +44,17 @@ class DocumentsController < ApplicationController
   private
 
   def document_params
-    params.require(:document).permit(:folder, :types, :deadline, :reminder, :photos, :name)
+    # on doit donner les champs précis car c'est ce qui est passé en paramètre
+    params.require(:document).permit(:folder_id, :deadline, :reminder, :name, photos: [])
+  end
+
+  def save_doctype(type_id)
+    unless type_id.empty?
+      doctype = DocumentType.new
+      doctype.document = @document
+      doctype.type_id = type_id
+      doctype.save
+    end
   end
 
 end

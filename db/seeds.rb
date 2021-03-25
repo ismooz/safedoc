@@ -1,9 +1,7 @@
-
-# To run this seed, in Terminal type command: rake db:seed:seeds
-# To run all seeds, in Terminal type command: rake db:seed:all
+require 'open-uri'
+require 'nokogiri'
 
 puts "Cleaning databases..."
-
 
 Type.destroy_all
 puts "destroy type"
@@ -18,37 +16,41 @@ puts "destroy user"
 puts "Creating users..."
 
 user_1 = User.create(email: "ismael@email.com",  password: "123456", first_name: "FFF", last_name: "LLL", birthdate: "2022-02-15", address: "bbbbbbbbb")
-user_2 = User.create(email: "ivan@email.com",  password: "123456", first_name: "FFF", last_name: "LLL", birthdate: "2022-02-15", address: "bbbbbbbbb")
+user_2 = User.create(email: "ivan@email.com",  password: "123456", first_name: "Ivan", last_name: "Perroud", birthdate: "2022-02-15", address: "Chemin Ritter, Fribourg")
 user_3 = User.create(email: "antoine@email.com",  password: "123456", first_name: "FFF", last_name: "LLL", birthdate: "2022-02-15", address: "bbbbbbbbb")
 
 puts "Creating folders..."
 
-folder_1 = Folder.create(name: "Privé")
-folder_2 = Folder.create(name: "Ménage")
-folder_3 = Folder.create(name: "Professionnel")
+folder_1 = Folder.create(name: "Personnel")
+Folder.create(name: "Ménage", folder_id: folder_1.id)
+Folder.create(name: "Santé", folder_id: folder_1.id)
+Folder.create(name: "Administration", folder_id: folder_1.id)
 
-folder_4 = Folder.create(name: "Privé level 2", folder_id: folder_1.id)
-folder_5 = Folder.create(name: "Ménage level 2", folder_id: folder_2.id)
-folder_6 = Folder.create(name: "Professionnel level 2", folder_id: folder_3.id)
+folder_2 = Folder.create(name: "Professionnel")
+Folder.create(name: "Travail", folder_id: folder_2.id)
+Folder.create(name: "Formation", folder_id: folder_2.id)
+Folder.create(name: "Postulations", folder_id: folder_2.id)
+
+folder_3 = Folder.create(name: "Autres")
 
 puts "Folders finished!"
 
 puts "Creating types..."
 
-type_1 = { name: "Assurance"}
-type_2 = { name: "Garantie"}
-type_3 = { name: "Contrat"}
+types = [{ name: "Contrat"},
+         { name: "Facture"},
+         { name: "Certificat"},
+         { name: "Attestation"},
+         { name: "Garantie"},
+         { name: "Identité"},
+         { name: "Communication"}]
 
-[type_1, type_2, type_3].each do |attributes|
-  type = Type.create!(attributes)
-  puts "Created #{type.id}"
+types.each do |type|
+  Type.create!(type)
 end
 puts "Types finished!"
 
 puts "Creating documents..."
-
-require 'open-uri'
-require 'nokogiri'
 
 # path of images (relative)
 images_path = File.expand_path(".", Dir.pwd) + "/app/assets/images/doc_samples"

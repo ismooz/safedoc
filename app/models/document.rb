@@ -1,8 +1,8 @@
 class Document < ApplicationRecord
   belongs_to :user
   belongs_to :folder
-  has_many :type, dependent: :destroy
-  # belongs_to :type
+  has_many :document_types, dependent: :destroy
   has_many_attached :photos
-
+  has_many :types, through: :document_types
+  validates :name, :deadline, :reminder, :photos, presence: true
 end
