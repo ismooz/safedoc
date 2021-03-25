@@ -12,13 +12,14 @@
               input_html: { multiple: true } %></td>
           </tr>
           <tr>
-            <th>Chose a folder</th>
-            <td><%= f.association :folder, as: :select, label: false,
-              input_html: { class: "select2" } %></td>
+            <th>Choose a folder</th>
+            <td><%= f.association :folder, include_blank: true, label: false,
+                input_html: { id: "folders" } %></td>
           </tr>
           <tr>
-            <td colspan="2"><%= f.association :type, collection: @types, as: :check_boxes, label: false,
-              input_html: { class: "tag-selector" }, item_wrapper_class: 'tag-item' %></td>
+            <td colspan="2"><%= f.association :types, as: :check_boxes, label: false,
+                required: true, 
+                input_html: { class: "tag-selector" }, item_wrapper_class: 'tag-item' %></td>
           </tr>
           <tr>
             <th>Deadline</th>
@@ -31,7 +32,7 @@
               input_html: {class: "datepicker"} %></td>
           </tr>
           <tr>
-            <th>Chose a name</th>
+            <th>Choose a name</th>
             <td><%= f.input :name, label: false %></td>
           </tr>
         </table>
