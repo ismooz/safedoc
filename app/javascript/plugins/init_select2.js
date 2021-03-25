@@ -20,7 +20,7 @@ const data = [
 const initSelect2 = () => {
   $(function() {
     // folders correspond à l'id qu'on a donné dans le champ select
-    $('#folders').select2( { width: '100%', placeholder: "Select a folder" });
+    $('#folders').select2( { width: '100%', placeholder: "Choose a folder" });
 });
 };
 
