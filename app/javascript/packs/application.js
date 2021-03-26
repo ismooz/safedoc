@@ -31,8 +31,8 @@ import { calculate } from '../components/reminder';
 import { alertDeadline, alertReminder } from '../components/reminder_alert';
 import { updateNbFiles } from '../components/notification';
 
+
 document.addEventListener('turbolinks:load', () => {
-   updateNbFiles();
    openFolder();
    sidebar();
    initFlatpickr();
@@ -40,4 +40,5 @@ document.addEventListener('turbolinks:load', () => {
    calculate(10); // reminder date is set 10 days back
    alertDeadline();
    alertReminder();
+   updateNbFiles();
   });
