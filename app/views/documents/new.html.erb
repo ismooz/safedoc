@@ -20,10 +20,21 @@
           <tr>
             <th>Choose a folder</th>
             <td><%= f.input :folder_id, collection: @folders,
-            include_blank: true, label: false, input_html: { id: "folders" } %></td>
+            include_blank: true, label: false %></td>
           </tr>
           <tr>
-            <td colspan="2"><%= f.association :types, as: :check_boxes, label: false,
+            <th>Choose a subfolder</th>
+            <td>
+            <%= f.input :folder_id, collection: @subfolders,
+                  as: :radio_buttons,
+                  input_html: { class: "tag-selector" },
+                  item_wrapper_class: 'tag-item', inline_label: 'choose subfolder' %>
+            </td>
+          </tr>
+
+          <tr>
+          <th>What kind of document is it ?</th>
+            <td colspan="2"><%= f.association :types, as: :check_boxes,
                 required: true,
                 input_html: { class: "tag-selector" }, item_wrapper_class: 'tag-item' %></td>
           </tr>

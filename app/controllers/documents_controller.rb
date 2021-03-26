@@ -23,6 +23,7 @@ class DocumentsController < ApplicationController
     @document = Document.new
     authorize @document
     @folders = Folder.where(folder_id: nil)
+    @subfolders = Folder.where.not(folder_id: nil)
   end
 
   def create
