@@ -9,7 +9,7 @@
           <tr>
             <th>Upload or Scan</th>
             <td>
-              <label class="btn btn-secondary">Choose file...
+              <label class="btn btn-secondary">Choose file<span class="notification"></span>
                 <span style="display:none;">
                   <%= f.input :photos, as: :file, label: false,
                         input_html: { multiple: true } %>
@@ -42,7 +42,7 @@
             <td><%= f.input :name, label: false %></td>
           </tr>
         </table>
-          <%= f.button :submit, class: "btn btn-info btn-lg btn-block" %>
+          <%= f.button :submit, class: "btn btn-info btn-block text-white" %>
         <% end %>
       </div>
     </div>
