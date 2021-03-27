@@ -19,7 +19,7 @@
           </tr>
           <tr>
             <th>Choose a folder</th>
-            <td><%= f.input :folder_id, collection: @folders,
+            <td><%= f.association :folder,
             include_blank: true, label: false, input_html: { id: "folders" } %></td>
           </tr>
           <tr>
@@ -42,7 +42,7 @@
             <td><%= f.input :name, label: false %></td>
           </tr>
         </table>
-          <%= f.button :submit, class: "btn btn-info btn-lg btn-block" %>
+          <%= f.button :submit, class: "btn btn-info btn-lg" %>
         <% end %>
       </div>
     </div>
