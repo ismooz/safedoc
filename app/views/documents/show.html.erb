@@ -18,12 +18,9 @@
       <!-- end display breadcrumb -->
 
       <!-- start display card -->
-      <div class="container">
         <div class="card">
-          <h5 class="card-header">Document details</h5>
+          <h5 class="card-header"><%= @name %></h5>
           <div class="card-body">
-            <p class="card-text">Name: <%= @name %></p>
-            <p class="card-text">Deadline: <%= @deadline %></p>
             <!-- preview -->
             <div class="card photo">
               <a href="#" role="button" data-toggle="modal" data-target="#exampleModalCenter">
@@ -31,14 +28,13 @@
               <div class="bottom-right"><i class="fas fa-search-plus"></i></div>
               </a>
               <div class="card-body top-solid">
-                <p class="card-text"><%= @updated_at %></p>
+                <p class="card-text"><%= @deadline %></p>
                 <p class="card-text">Pages: <%= @pages %></p>
-                <a href="<%= cloudinary_url(@download_key, :flags => "attachment") %>" class="btn btn-info">Downlaod document</a>
+                <a href="<%= cloudinary_url(@download_key, :flags => "attachment") %>" class="btn btn-info text-white">Downlaod document</a>
               </div>
             </div>
           </div>
         </div>
-      </div>
 
       <!-- Modal -->
       <div class="modal fade modal" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
