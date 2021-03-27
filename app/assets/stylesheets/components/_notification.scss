@@ -1,0 +1,14 @@
+.notification {
+  color: white;
+  background-color: $red;
+  border-radius: 50%;
+  padding: 4px 8px;
+  font-size: 80%;
+  margin-left: 7px;
+  display: none;
+  text-shadow: 2px 2px 20px #CE5937;
+}
+
+.visible {
+  display: inline;
+}

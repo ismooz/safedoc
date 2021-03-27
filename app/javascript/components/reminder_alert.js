@@ -9,7 +9,7 @@ const alertDeadline = () => {
     const reminderDate = stringToDate(reminderStr);
     const ecart = deadlineDate - reminderDate;
     const nbDays = Math.floor(ecart / (1000 * 3600 * 24));
-    span.innerText = "(".concat(nbDays).concat(" days before)");
+    span.innerText = "(Reminder is set ".concat(nbDays).concat(" days before)");
     });
   };
 };
@@ -21,7 +21,7 @@ const alertReminder = () => {
     const reminderDate = stringToDate(reminderStr);
     const ecart = deadlineDate - reminderDate;
     const nbDays = Math.floor(ecart / (1000 * 3600 * 24));
-    span.innerText = "(".concat(nbDays).concat(" days before)");
+    span.innerText = "(Reminder is set ".concat(nbDays).concat(" days before)");
     });
   };
 };
