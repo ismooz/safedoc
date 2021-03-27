@@ -1,5 +1,5 @@
 .photo {
-  width: 24rem;
+  max-width: 24rem;
   img {
     padding: 16px 16px 0 16px;
     background-color: #F5F5F5;
@@ -12,6 +12,7 @@
   font-size: 32px;
   color: $turquoise;
   opacity: 0.7;
+  text-shadow: 3px 3px 16px lightgray;
   &:hover {
    opacity: 1;
 

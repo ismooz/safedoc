@@ -4,7 +4,6 @@
 // that code so it'll be compiled.
 
 require("@rails/ujs").start()
-require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
 
@@ -32,7 +31,7 @@ import { alertDeadline, alertReminder } from '../components/reminder_alert';
 import { updateNbFiles } from '../components/notification';
 
 
-document.addEventListener('turbolinks:load', () => {
+window.addEventListener('load', () => {
    initSelect2();
    openFolder();
    sidebar();
