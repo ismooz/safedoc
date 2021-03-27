@@ -19,7 +19,7 @@
           </tr>
           <tr>
             <th>Choose a folder</th>
-            <td><%= f.association :folder,
+            <td><%= f.input :folder_id, collection: @indented_folder_list,
             include_blank: true, label: false, input_html: { class: "select2", id: "folders" } %></td>
           </tr>
           <tr>
