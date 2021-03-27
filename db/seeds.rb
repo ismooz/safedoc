@@ -21,14 +21,15 @@ user_3 = User.create(email: "antoine@email.com",  password: "123456", first_name
 
 puts "Creating folders..."
 
-folder_1 = Folder.create(name: "Personnel")
+folder_1 = Folder.create(name: "Privé")
+Folder.create(name: "Administration", folder_id: folder_1.id)
+Folder.create(name: "Famille", folder_id: folder_1.id)
 Folder.create(name: "Ménage", folder_id: folder_1.id)
 Folder.create(name: "Santé", folder_id: folder_1.id)
-Folder.create(name: "Administration", folder_id: folder_1.id)
 
 folder_2 = Folder.create(name: "Professionnel")
 Folder.create(name: "Travail", folder_id: folder_2.id)
-Folder.create(name: "Formation", folder_id: folder_2.id)
+Folder.create(name: "Formations", folder_id: folder_2.id)
 Folder.create(name: "Postulations", folder_id: folder_2.id)
 
 folder_3 = Folder.create(name: "Autres")
@@ -40,7 +41,6 @@ puts "Creating types..."
 types = [{ name: "Contrat"},
          { name: "Facture"},
          { name: "Certificat"},
-         { name: "Attestation"},
          { name: "Garantie"},
          { name: "Identité"},
          { name: "Communication"}]
@@ -72,20 +72,18 @@ Dir.glob(images_path + "/*").each do |f|
   file = File.open(filepath)
   puts file
 
-
-  deadline = deadline_dates.sample
-  puts deadline
+  deadline_date = deadline_dates.shuffle.first
 
 puts "test 1"
-  document = Document.new(name: "#{filename_wo_extension}", deadline: deadline, reminder: "2022/02/05", user_id: User.first.id, folder_id: Folder.first.id)
+  document = Document.new(name: "#{filename_wo_extension}", deadline: deadline_date, reminder: "2022/02/05", user_id: User.first.id, folder_id: Folder.first.id)
 puts "test 2"
-
   # definition, variable
   first = Hash.new
   first[:key] = "1"
   first[:url] = "https://res.cloudinary.com/ismooz/image/upload/v1615642798/bp4jixnmmbdbwzypmh29.jpg"
   first[:extension] = "image/jpg"
   current = first
+
 
 
   # insertion, fix
