@@ -33,7 +33,7 @@ import { updateNbFiles } from '../components/notification';
 
 
 document.addEventListener('turbolinks:load', () => {
-   //initSelect2();
+   initSelect2();
    openFolder();
    sidebar();
    initFlatpickr();

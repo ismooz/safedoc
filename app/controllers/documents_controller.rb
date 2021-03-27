@@ -22,8 +22,7 @@ class DocumentsController < ApplicationController
   def new
     @document = Document.new
     authorize @document
-    @folders = Folder.where(folder_id: nil)
-    @subfolders = Folder.where.not(folder_id: nil)
+   # @folders = Folder.all #where(folder_id: nil)
   end
 
   def create
@@ -38,6 +37,7 @@ class DocumentsController < ApplicationController
       end
       redirect_to @document
     else
+      #@folders = Folder.where(folder_id: nil)
       render :new # il faut render pour afficher le message d'erreur
     end
   end
