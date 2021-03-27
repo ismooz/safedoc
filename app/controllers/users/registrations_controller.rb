@@ -14,7 +14,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     super
     @user = User.new(configure_sign_up_params) # pquoi ça marche alors que ce n'est pas un string
     if @user.save
-      redirect_to @user
+      redirect_to root_path
     else
       render :new # il faut render pour afficher le message d'erreur
     end
