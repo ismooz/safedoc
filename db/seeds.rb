@@ -56,9 +56,9 @@ puts "Creating documents..."
 images_path = File.expand_path(".", Dir.pwd) + "/app/assets/images/doc_samples"
 puts images_path
 
-# date_1 = "2022/02/15"
-# date_2 = "2023/07/11"
-# date_3 = "2024/11/22"
+date_1 = "2022/02/15"
+date_2 = "2023/07/11"
+date_3 = "2024/11/22"
 
 deadline_dates = [date_1, date_2, date_3]
 
