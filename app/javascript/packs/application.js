@@ -30,6 +30,8 @@ import { initSelect2 } from '../plugins/init_select2';
 import { calculate } from '../components/reminder';
 import { alertDeadline, alertReminder } from '../components/reminder_alert';
 
+import { typedtext } from '../components/typedtext';
+
 document.addEventListener('turbolinks:load', () => {
    openFolder();
    sidebar();
@@ -38,4 +40,6 @@ document.addEventListener('turbolinks:load', () => {
    calculate(10); // reminder date is set 10 days back
    alertDeadline();
    alertReminder();
+
+   typedtext();
   });

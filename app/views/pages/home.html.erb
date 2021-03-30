@@ -4,8 +4,8 @@
     <h2>My last documents saved</h2>
     <br>
     <div class="row">
-      <% if @document.length > 0 %>
-        <% @document.each do |doc| %>
+      <% if @last_documents.length > 0 %>
+        <% @last_documents.each do |doc| %>
           <div class="col-xs-12 col-md-6 col-lg-4">
             <div class="card-trip">
               <%= link_to doc do %>
@@ -32,8 +32,8 @@
     <h2>Next upcoming deadlines</h2>
     <br>
     <div class="row">
-      <% if @docu_ddl.length > 0 %>
-        <% @docu_ddl.each do |doc| %>
+      <% if @doc_by_deadline.length > 0 %>
+        <% @doc_by_deadline.each do |doc| %>
           <div class="col-xs-12 col-md-6 col-lg-4">
             <div class="card-trip">
               <%= link_to doc do %>
@@ -59,20 +59,12 @@
   </div>
 
   <% else %>
+<!-- -------------------- User not signed -------------------- -->
 
-  <div class="container pt-5">
-    <div class="row">
-      <div class="anim-typewriter">
-        <div class="line-1 anim-typewriter">
-          <span>Need help keeping track with paperwork ? </span>
-
-          <span>Try safedoc</span>
-
-          <!-- Safedoc is an app designed to help you keep all your important documents at the same place and healp you manage your contract's deadlines" -->
-        </div>
-      </div>
-    </div>
+  <div>
+    no user signed in
   </div>
+
   <% end %>
 
 

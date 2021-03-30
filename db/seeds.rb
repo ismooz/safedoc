@@ -19,6 +19,7 @@ user_1 = User.create(email: "ismael@email.com",  password: "123456", first_name:
 user_2 = User.create(email: "ivan@email.com",  password: "123456", first_name: "Ivan", last_name: "Perroud", birthdate: "2022-02-15", address: "Chemin Ritter, Fribourg")
 user_3 = User.create(email: "antoine@email.com",  password: "123456", first_name: "FFF", last_name: "LLL", birthdate: "2022-02-15", address: "bbbbbbbbb")
 
+
 puts "Creating folders..."
 
 folder_1 = Folder.create(name: "Personnel")
@@ -56,6 +57,8 @@ puts "Creating documents..."
 images_path = File.expand_path(".", Dir.pwd) + "/app/assets/images/doc_samples"
 puts images_path
 
+users = [user_1, user_2, user_3]
+
 date_1 = "2022/02/15"
 date_2 = "2023/07/11"
 date_3 = "2024/11/22"
@@ -72,11 +75,18 @@ Dir.glob(images_path + "/*").each do |f|
   file = File.open(filepath)
   puts file
 
+  user_x = users.sample
+  puts users
+  puts user_x
   # deadline_date = deadline_date.shuffle.first
   deadline = deadline_dates.sample
   puts deadline
 
-  document = Document.new(name: "#{filename_wo_extension}", deadline: deadline, reminder: "2022/02/05", user_id: User.first.id, folder_id: Folder.first.id)
+  puts "test_1"
+
+  document = Document.new(name: "#{filename_wo_extension}", deadline: deadline, reminder: "2022/02/05", user: user_x, folder_id: Folder.first.id)
+
+  puts "test_2"
 
   # definition, variable
   first = Hash.new
@@ -85,11 +95,14 @@ Dir.glob(images_path + "/*").each do |f|
   first[:extension] = "image/jpg"
   current = first
 
+puts "test_3"
 
   # insertion, fix
   file = URI.open(current[:url])
   document.photos.attach(io: file, filename: "#{filename_wo_extension}_page#{current[:key]}", content_type: current[:extension])
   document.save!
+
+  puts "test_4"
 
   # definition, variable
   second = Hash.new
@@ -97,6 +110,8 @@ Dir.glob(images_path + "/*").each do |f|
   second[:url] = "https://res.cloudinary.com/ismooz/image/upload/v1616085330/pw05d3nfn4is22ia0flbjzz1qyd4.png"
   second[:extension] = "image/png"
   current = second
+
+  puts "test_5"
 
   # insertion, fix
   file = URI.open(current[:url])

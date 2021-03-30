@@ -2,11 +2,14 @@ class PagesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:home]
 
   def home
-    @document = Document.all.take(3)
 
-    @docu_ddl = @document.sort_by { |doc| [doc.deadline]}
+    @documents = Document.where(user: current_user)
 
-    @docu_ddl = @docu_ddl.take(3)
+
+    @last_documents = @documents.last(3)
+
+    @doc_by_deadline = @documents.sort_by { |doc| [doc.deadline]}
+    @doc_by_deadline = @doc_by_deadline.take(3)
 
   end
 end
