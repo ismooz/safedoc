@@ -20,16 +20,17 @@ user_2 = User.create(email: "ivan@email.com",  password: "123456", first_name: "
 user_3 = User.create(email: "antoine@email.com",  password: "123456", first_name: "FFF", last_name: "LLL", birthdate: "2022-02-15", address: "bbbbbbbbb")
 
 
-puts "Creating folders..."
+puts "Creating folders & sub-folders..."
 
-folder_1 = Folder.create(name: "Personnel")
+folder_1 = Folder.create(name: "Privé")
+Folder.create(name: "Administration", folder_id: folder_1.id)
+Folder.create(name: "Famille", folder_id: folder_1.id)
 Folder.create(name: "Ménage", folder_id: folder_1.id)
 Folder.create(name: "Santé", folder_id: folder_1.id)
-Folder.create(name: "Administration", folder_id: folder_1.id)
 
 folder_2 = Folder.create(name: "Professionnel")
 Folder.create(name: "Travail", folder_id: folder_2.id)
-Folder.create(name: "Formation", folder_id: folder_2.id)
+Folder.create(name: "Formations", folder_id: folder_2.id)
 Folder.create(name: "Postulations", folder_id: folder_2.id)
 
 folder_3 = Folder.create(name: "Autres")
@@ -41,7 +42,6 @@ puts "Creating types..."
 types = [{ name: "Contrat"},
          { name: "Facture"},
          { name: "Certificat"},
-         { name: "Attestation"},
          { name: "Garantie"},
          { name: "Identité"},
          { name: "Communication"}]
@@ -55,7 +55,7 @@ puts "Creating documents..."
 
 # path of images (relative)
 images_path = File.expand_path(".", Dir.pwd) + "/app/assets/images/doc_samples"
-puts images_path
+
 
 users = [user_1, user_2, user_3]
 
@@ -67,26 +67,16 @@ deadline_dates = [date_1, date_2, date_3]
 
 Dir.glob(images_path + "/*").each do |f|
   filename_wo_extension = File.basename(f, ".pdf")
-  puts filename_wo_extension
   filename = File.basename(f)
-  puts filename
   filepath = File.path(f)
-  puts filepath
   file = File.open(filepath)
-  puts file
+
 
   user_x = users.sample
-  puts users
-  puts user_x
   # deadline_date = deadline_date.shuffle.first
   deadline = deadline_dates.sample
-  puts deadline
-
-  puts "test_1"
 
   document = Document.new(name: "#{filename_wo_extension}", deadline: deadline, reminder: "2022/02/05", user: user_x, folder_id: Folder.first.id)
-
-  puts "test_2"
 
   # definition, variable
   first = Hash.new
@@ -95,14 +85,10 @@ Dir.glob(images_path + "/*").each do |f|
   first[:extension] = "image/jpg"
   current = first
 
-puts "test_3"
-
   # insertion, fix
   file = URI.open(current[:url])
   document.photos.attach(io: file, filename: "#{filename_wo_extension}_page#{current[:key]}", content_type: current[:extension])
   document.save!
-
-  puts "test_4"
 
   # definition, variable
   second = Hash.new
@@ -110,8 +96,6 @@ puts "test_3"
   second[:url] = "https://res.cloudinary.com/ismooz/image/upload/v1616085330/pw05d3nfn4is22ia0flbjzz1qyd4.png"
   second[:extension] = "image/png"
   current = second
-
-  puts "test_5"
 
   # insertion, fix
   file = URI.open(current[:url])
