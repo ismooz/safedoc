@@ -11,7 +11,7 @@ class DocumentsController < ApplicationController
     @breadcrumb = generate_breadcrumb(folder, breadcrumb)
 
     # doc infos
-    @deadline = @document.deadline
+    @deadline = @document.deadline.strftime("Document expiry: %d %B %Y")
     @updated_at = @document.updated_at.strftime("Last updated: %d %B %Y")
     @name = @document.name
     @thumb_key = @document.photos.first.key
@@ -22,7 +22,8 @@ class DocumentsController < ApplicationController
   def new
     @document = Document.new
     authorize @document
-    @folders = Folder.where(folder_id: nil)
+    folders = Folder.all
+    @indented_folder_list = generate_array(folders)
   end
 
   def create
@@ -37,6 +38,8 @@ class DocumentsController < ApplicationController
       end
       redirect_to @document
     else
+      folders = Folder.all
+      @indented_folder_list = generate_array(folders)
       render :new # il faut render pour afficher le message d'erreur
     end
   end
@@ -46,6 +49,19 @@ class DocumentsController < ApplicationController
   def document_params
     # on doit donner les champs précis car c'est ce qui est passé en paramètre
     params.require(:document).permit(:folder_id, :deadline, :reminder, :name, photos: [])
+  end
+
+  def generate_array(folders)
+    results = []
+    folders.each do |folder|
+      if folder.folder_id.nil?
+        temp = [folder.name, folder.id]
+      else
+        temp = ["» #{folder.name}", folder.id]
+      end
+      results.push(temp)
+    end
+    results
   end
 
   def save_doctype(type_id)

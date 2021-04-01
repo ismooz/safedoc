@@ -1,0 +1,10 @@
+.container {
+  height: 88vh;
+  overflow-y: scroll;
+}
+
+@media only screen and (max-width: 576px) {
+  .container {
+    height: 78vh;
+  }
+}

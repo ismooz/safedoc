@@ -1,0 +1,19 @@
+.navbar-mobile {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: $m-blue;
+  color: $turquoise;
+  bottom: 0;
+  width: 100%;
+  height: 10vh;
+  position: fixed;
+  visibility: hidden;
+}
+
+@media only screen and (max-width: 450px) {
+  .navbar-mobile {
+    visibility: visible;
+  }
+}
+

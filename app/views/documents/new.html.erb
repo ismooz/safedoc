@@ -1,50 +1,48 @@
-<div class="container">
-  <div class="row justify-content-center">
-    <div class="col-sm-6 form">
-      <div>
-        <h2>Add a new doc</h2>
-        <!-- form to add a new document -->
-        <%= simple_form_for @document do |f| %>
-        <table class="table">
-          <tr>
-            <th>Upload or Scan</th>
-            <td>
-              <label class="btn btn-secondary">Choose file...
-                <span style="display:none;">
-                  <%= f.input :photos, as: :file, label: false,
-                        input_html: { multiple: true } %>
-                </span>
-              </label>
-            </td>
-          </tr>
-          <tr>
-            <th>Choose a folder</th>
-            <td><%= f.association :folder,
-            include_blank: true, label: false, input_html: { id: "folders" } %></td>
-          </tr>
-          <tr>
-            <td colspan="2"><%= f.association :types, as: :check_boxes, label: false,
-                required: true,
-                input_html: { class: "tag-selector" }, item_wrapper_class: 'tag-item' %></td>
-          </tr>
-          <tr>
-            <th>Deadline</th>
-            <td><%= f.input :deadline, as: :string, required: true, label: false,
-              input_html: {class: "datepicker"} %></td>
-          </tr>
-          <tr>
-            <th>Reminder</th>
-            <td><%= f.input :reminder, as: :string, required: false, label: false,
-              input_html: {class: "datepicker"} %><span class="text-danger" id="span"></span></td>
-          </tr>
-          <tr>
-            <th>Choose a name</th>
-            <td><%= f.input :name, label: false %></td>
-          </tr>
-        </table>
-          <%= f.button :submit, class: "btn btn-info btn-lg" %>
-        <% end %>
-      </div>
-    </div>
+<div class="row justify-content-center">
+  <div class="col-sm-10 col-lg-6 form m-0 m-sm-5">
+    <h2>Add a new doc</h2>
+    <!-- form to add a new document -->
+    <%= simple_form_for @document do |f| %>
+    <table class="table">
+      <tr>
+        <th>Upload or Scan</th>
+        <td>
+          <label class="btn btn-secondary">Choose file<span class="notification"></span>
+            <span style="display:none;">
+              <%= f.input :photos, as: :file, label: false,
+                    input_html: { multiple: true } %>
+            </span>
+          </label>
+        </td>
+      </tr>
+      <tr>
+        <th>Choose a folder</th>
+        <td><%= f.input :folder_id, collection: @indented_folder_list,
+        include_blank: true, label: false, input_html: { class: "select2", id: "folders" } %></td>
+      </tr>
+      <tr>
+      <tr>
+      <th>What kind of document is it ?</th>
+        <td colspan="2"><%= f.association :types, as: :check_boxes,
+            required: true,
+            input_html: { class: "tag-selector" }, item_wrapper_class: 'tag-item' %></td>
+      </tr>
+      <tr>
+        <th>Deadline</th>
+        <td><%= f.input :deadline, as: :string, required: true, label: false,
+          input_html: {class: "datepicker"} %></td>
+      </tr>
+      <tr>
+        <th>Reminder</th>
+        <td><%= f.input :reminder, as: :string, required: false, label: false,
+          input_html: {class: "datepicker"} %><span class="text-danger" id="span"></span></td>
+      </tr>
+      <tr>
+        <th>Choose a name</th>
+        <td><%= f.input :name, label: false %></td>
+      </tr>
+    </table>
+      <%= f.button :submit, class: "btn btn-info btn-block text-white" %>
+    <% end %>
   </div>
 </div>

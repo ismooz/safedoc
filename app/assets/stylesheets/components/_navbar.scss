@@ -6,6 +6,7 @@
   justify-content: space-between;
   background: $m-blue;
   font-family: $headers-font;
+  min-height: 12vh;
 }
 
 .navbar-lewagon .navbar-collapse {
@@ -27,5 +28,6 @@
   .btn {
     margin-bottom: .8rem;
   }
+
 }
 

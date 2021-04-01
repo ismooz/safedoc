@@ -1,57 +1,51 @@
-<div class="container">
-  <div class="row justify-content-center">
-    <div class="col-sm-10 form">
-      <!-- display breadcrumb -->
-      <nav aria-label="breadcrumb">
-        <ol class="breadcrumb">
-          <!-- root -->
-          <li class="breadcrumb-item">
-            <a href="<%= folders_path %>"><i class="fas fa-home fa"></i></a>
-          </li>
-          <!-- other items -->
-          <% @breadcrumb.each_with_index do |folder, index| %>
-            <li class="breadcrumb-item"><a href="<%= folder_path(folder) %>"><%= folder.name %></a></li>
-          <% end %>
-          <li class="breadcrumb-item active" aria-current="page"><%= @document.name %></li>
-        </ol>
-      </nav>
-      <!-- end display breadcrumb -->
+<div class="row justify-content-center">
+  <div class="col-sm-10 form m-0 m-sm-5">
+    <!-- display breadcrumb -->
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <!-- root -->
+        <li class="breadcrumb-item">
+          <a href="<%= folders_path %>"><i class="fas fa-home fa"></i></a>
+        </li>
+        <!-- other items -->
+        <% @breadcrumb.each_with_index do |folder, index| %>
+          <li class="breadcrumb-item"><a href="<%= folder_path(folder) %>"><%= folder.name %></a></li>
+        <% end %>
+        <li class="breadcrumb-item active" aria-current="page"><%= @document.name %></li>
+      </ol>
+    </nav>
+    <!-- end display breadcrumb -->
 
-      <!-- start display card -->
-      <div class="container">
-        <div class="card">
-          <h5 class="card-header">Document details</h5>
-          <div class="card-body">
-            <p class="card-text">Name: <%= @name %></p>
-            <p class="card-text">Deadline: <%= @deadline %></p>
-            <!-- preview -->
-            <div class="card photo">
-              <a href="#" role="button" data-toggle="modal" data-target="#exampleModalCenter">
-              <%= cl_image_tag(@thumb_key, :gravity=>"auto", :width=>400, :aspect_ratio=>"16:9", :crop=>"fill", class: "card-img-top") %>
-              <div class="bottom-right"><i class="fas fa-search-plus"></i></div>
-              </a>
-              <div class="card-body top-solid">
-                <p class="card-text"><%= @updated_at %></p>
-                <p class="card-text">Pages: <%= @pages %></p>
-                <a href="<%= cloudinary_url(@download_key, :flags => "attachment") %>" class="btn btn-info">Downlaod document</a>
-              </div>
+    <!-- start display card -->
+      <div class="card">
+        <h5 class="card-header"><%= @name %></h5>
+        <div class="card-body">
+          <!-- preview -->
+          <div class="card photo">
+            <a href="#" role="button" data-toggle="modal" data-target="#exampleModalCenter">
+            <%= cl_image_tag(@thumb_key, :gravity=>"auto", :width=>400, :aspect_ratio=>"16:9", :crop=>"fill", class: "card-img-top") %>
+            <div class="bottom-right"><i class="fas fa-search-plus"></i></div>
+            </a>
+            <div class="card-body top-solid">
+              <p class="card-text"><%= @deadline %></p>
+              <p class="card-text">Pages: <%= @pages %></p>
+              <a href="<%= cloudinary_url(@download_key, :flags => "attachment") %>" class="btn btn-info text-white">Downlaod document</a>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- Modal -->
-      <div class="modal fade modal" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-          <div class="modal-content">
-            <div class="modal-body">
-            <!-- render carousel -->
-              <%= render 'shared/carousel', document: @document %>
-            </div>
-            <!-- End modal: footer -->
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            </div>
+    <!-- Modal -->
+    <div class="modal fade modal" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-body">
+          <!-- render carousel -->
+            <%= render 'shared/carousel', document: @document %>
+          </div>
+          <!-- End modal: footer -->
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
           </div>
         </div>
       </div>

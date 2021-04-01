@@ -21,14 +21,15 @@ user_3 = User.create(email: "antoine@email.com",  password: "123456", first_name
 
 puts "Creating folders..."
 
-folder_1 = Folder.create(name: "Personnel")
+folder_1 = Folder.create(name: "Privé")
+Folder.create(name: "Administration", folder_id: folder_1.id)
+Folder.create(name: "Famille", folder_id: folder_1.id)
 Folder.create(name: "Ménage", folder_id: folder_1.id)
 Folder.create(name: "Santé", folder_id: folder_1.id)
-Folder.create(name: "Administration", folder_id: folder_1.id)
 
 folder_2 = Folder.create(name: "Professionnel")
 Folder.create(name: "Travail", folder_id: folder_2.id)
-Folder.create(name: "Formation", folder_id: folder_2.id)
+Folder.create(name: "Formations", folder_id: folder_2.id)
 Folder.create(name: "Postulations", folder_id: folder_2.id)
 
 folder_3 = Folder.create(name: "Autres")
@@ -40,7 +41,6 @@ puts "Creating types..."
 types = [{ name: "Contrat"},
          { name: "Facture"},
          { name: "Certificat"},
-         { name: "Attestation"},
          { name: "Garantie"},
          { name: "Identité"},
          { name: "Communication"}]
@@ -60,7 +60,7 @@ date_1 = "2022/02/15"
 date_2 = "2023/07/11"
 date_3 = "2024/11/22"
 
-deadline_date = [date_1, date_2, date_3]
+deadline_dates = [date_1, date_2, date_3]
 
 Dir.glob(images_path + "/*").each do |f|
   filename_wo_extension = File.basename(f, ".pdf")
@@ -72,7 +72,7 @@ Dir.glob(images_path + "/*").each do |f|
   file = File.open(filepath)
   puts file
 
-  deadline_date = deadline_date.shuffle.first
+  deadline_date = deadline_dates.shuffle.first
 
 puts "test 1"
   document = Document.new(name: "#{filename_wo_extension}", deadline: deadline_date, reminder: "2022/02/05", user_id: User.first.id, folder_id: Folder.first.id)
