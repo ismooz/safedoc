@@ -12,16 +12,11 @@
   <body>
       <%= render 'shared/navbar' %>
       <%= render 'shared/flashes' %>
-      <% if user_signed_in? %>
-        <div class="wrapper d-flex">
-          <%= render 'shared/sidebar' %>
-          <div class="wrapper pt-5">
-            <%= yield %>
-          </div>
-        </div>
-      <% else %>
+      <div class="container">
         <%= yield %>
+      </div>
+      <% if user_signed_in? %>
+        <%= render 'shared/navbar_mobile' %>
       <% end %>
-      <%= render 'shared/navbar_mobile' %>
   </body>
 </html>
