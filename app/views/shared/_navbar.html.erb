@@ -27,7 +27,7 @@
             <%= image_tag "default-avatar.jpg", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
           <% end %>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-            <%= link_to "Action", "#", class: "dropdown-item" %>
+            <%= link_to "Pricing", pricing_path, class: "dropdown-item" %>
             <%= link_to "Edit profile", edit_user_registration_path, class: "dropdown-item" %>
             <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
           </div>
@@ -37,7 +37,7 @@
           <%= link_to "Home", root_path, class: "nav-link text-info" %>
         </li>
         <li class="nav-item">
-          <%= link_to "Pricing", new_document_path, class: "nav-link text-info" %>
+          <%= link_to "Pricing", pricing_path, class: "nav-link text-info" %>
         </li>
         <li class="nav-item">
           <%= link_to "About us", folders_path, class: "nav-link text-info mr-5" %>
