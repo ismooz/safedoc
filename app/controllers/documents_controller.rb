@@ -17,6 +17,7 @@ class DocumentsController < ApplicationController
     @thumb_key = @document.photos.first.key
     @pages = @document.photos.size
     @download_key = @document.photos.last.key
+    @tags = @document.types
   end
 
   def new
