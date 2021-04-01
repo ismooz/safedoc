@@ -9,4 +9,13 @@ class PagesController < ApplicationController
     @docu_ddl = @docu_ddl.take(3)
 
   end
+
+  def faq
+
+  end
+
+  def gdpr
+
+  end
+
 end
