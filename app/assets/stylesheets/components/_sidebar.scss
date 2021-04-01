@@ -63,7 +63,6 @@
   max-width: 200px;
   background: $m-blue;
   color: #fff;
-  transition: all .8s;
   position: relative;
   z-index: 1;
   margin-right: 30px;
@@ -73,6 +72,7 @@
   }
   &.active{
     margin-left: 0px;
+    transition: all .8s;
   }
   h1{
     margin-bottom: 20px;

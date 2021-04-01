@@ -1,25 +1,32 @@
 
 <% if user_signed_in? %>
   <div class="container pt-5">
-    <h2>My last documents saved</h2>
+    <h2>📄 My last documents saved</h2>
     <br>
+
     <div class="row">
       <% if @document.length > 0 %>
         <% @document.each do |doc| %>
           <div class="col-xs-12 col-md-6 col-lg-4">
-            <div class="card-trip">
+            <div class="card-product">
               <%= link_to doc do %>
                 <div>
-                  <h5><%= doc.name %></h5>
+                  <%= cl_image_tag(doc.photos.first.key) %>
+                  <div class="card-product-infos">
+                    <div>
+                      <h2><%= doc.name %></h2>
+                      <p><%= "Created at #{doc.created_at.strftime("%d.%m.%Y")}" %></p>
+                    </div>
+                    <i class="far fa-eye"></i>
+                  </div>
                 </div>
-                <%= cl_image_tag(doc.photos.first.key, height: 200) %>
               <% end %>
             </div>
           </div>
         <% end %>
       <% else %>
         <div class="col-xs-12 col-md-6 col-lg-4">
-          <div class="card-trip">
+          <div>
             <em>No documents added yet...</em>
             <%= link_to '<i class="fas fa-plus"></i> Add a new doc'.html_safe, new_document_path, class: "btn btn-primary"  %>
           </div>
@@ -29,28 +36,31 @@
   </div>
 
   <div class="container pt-5">
-    <h2>Next upcoming deadlines</h2>
+    <h2>🔔 Next upcoming deadlines</h2>
     <br>
+
     <div class="row">
       <% if @docu_ddl.length > 0 %>
         <% @docu_ddl.each do |doc| %>
           <div class="col-xs-12 col-md-6 col-lg-4">
-            <div class="card-trip">
+            <div class="card-product">
               <%= link_to doc do %>
                 <div>
-                  <h5><%= doc.name %></h5>
+                  <%= cl_image_tag(doc.photos.first.key) %>
                 </div>
-                 <div>
-                  <h5><%= "Expiration date #{doc.deadline}" %></h5>
+                <div class="card-product-infos">
+                  <div>
+                    <h2><%= doc.name %></h2>
+                    <p><%= "Expire at #{doc.deadline.strftime("%d.%m.%Y")}" %></p>
+                  </div>
                 </div>
-                <%= cl_image_tag(doc.photos.first.key, height: 200) %>
               <% end %>
             </div>
           </div>
         <% end %>
       <% else %>
         <div class="col-xs-12 col-md-6 col-lg-4">
-          <div class="card-trip">
+          <div>
             <em>Good job ! No deadlines...</em>
           </div>
         </div>
@@ -61,9 +71,9 @@
   <% else %>
 
   <div class="container pt-5">
-    <div class="row">
+    <div class="row col-md-10">
       <h2>Need help keeping track with paperwork</h2>
-      <div> <%= "Safedoc is an app deigned to help you keep all your important documents at the same place and healp you manage your contract's deadlines" %> <div/>
+      <div><em>"Safedoc is an app designed to help you keep all your important documents at the same place and healp you manage your contract's deadlines"</em><div/>
     </div>
   </div>
   <% end %>
