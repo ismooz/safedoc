@@ -32,11 +32,10 @@ import { updateNbFiles } from '../components/notification';
 
 
 window.addEventListener('load', () => {
-   initSelect2();
    openFolder();
    sidebar();
    initFlatpickr();
-   calculate(10); // reminder date is set 10 days back
+   calculate(30); // reminder date is set 30 days back
    alertDeadline();
    alertReminder();
    updateNbFiles();
