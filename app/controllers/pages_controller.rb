@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:home]
+  skip_before_action :authenticate_user!, only: [:home, :pricing]
 
   def home
     @document = Document.all.take(3)
@@ -8,5 +8,8 @@ class PagesController < ApplicationController
 
     @docu_ddl = @docu_ddl.take(3)
 
+  end
+
+  def pricing
   end
 end
