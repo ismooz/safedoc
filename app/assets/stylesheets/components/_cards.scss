@@ -99,7 +99,7 @@
 // PHOTO CARDS //
 
 .photo {
-  width: 24rem;
+  max-width: 40rem;
   img {
     padding: 16px 16px 0 16px;
     background-color: #F5F5F5;
@@ -108,14 +108,13 @@
 }
 .bottom-right {
   position: absolute;
-  top: 160px;
-  right: 24px;
+  bottom: 100px;
+  right: 32px;
   font-size: 32px;
-  color: $turquoise;
+  color: $h-blue;
   opacity: 0.7;
   &:hover {
    opacity: 1;
-
   }
 }
 
@@ -125,6 +124,16 @@
 
 .arrow-color {
   color: gray;
+}
+
+.saved-tag {
+  color: white;
+  background-color: $h-blue;
+  border-radius: 50rem;
+  font-size: 0.9rem;
+  padding: 0.25rem 0.6rem;
+  margin-left: 0.7rem;
+  margin-bottom: 0.4rem;
 }
 
 @media (max-width: 893px) {
