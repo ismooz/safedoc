@@ -7,4 +7,8 @@ Rails.application.routes.draw do
 
   get "/pricing", to: "pages#pricing"
 
+  get "/faq", to: "pages#faq"
+
+  get "/gdpr", to: "pages#gdpr"
+
 end

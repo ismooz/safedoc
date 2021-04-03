@@ -37,6 +37,9 @@
           <%= f.input :password_confirmation,
                       required: true,
                       input_html: { autocomplete: "new-password" } %>
+          <%= f.input :chk_box_validation, as: :boolean, checked_value: true, unchecked_value: false, label: "I agree GDPR" %>
+
+
         </div>
 
         <div class="form-actions">

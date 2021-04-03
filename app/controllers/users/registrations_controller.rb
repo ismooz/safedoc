@@ -11,13 +11,20 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # POST /resource
   def create
+    # binding.pry
+    raise
+
     super
     @user = User.new(configure_sign_up_params) # pquoi ça marche alors que ce n'est pas un string
+
+
     if @user.save
       redirect_to root_path
     else
       render :new # il faut render pour afficher le message d'erreur
     end
+
+
   end
   # GET /resource/edit
   def edit
@@ -54,7 +61,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # If you have extra params to permit, append them to the sanitizer.
   def configure_sign_up_params
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:first_name, :last_name, :birthdate, :address, :profile_image])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:first_name, :last_name, :birthdate, :address, :profile_image, :chk_box_validation])
   end
 
   # If you have extra params to permit, append them to the sanitizer.
