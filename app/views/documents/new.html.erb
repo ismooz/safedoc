@@ -5,9 +5,9 @@
     <%= simple_form_for @document do |f| %>
     <table class="table">
       <tr>
-        <th>Upload or Scan</th>
+        <th>Upload or Scan image</th>
         <td>
-          <label class="btn btn-secondary">Choose file<span class="notification"></span>
+          <label class="btn btn-secondary">Choose image<span class="notification"></span>
             <span style="display:none;">
               <%= f.input :photos, as: :file, label: false,
                     input_html: { multiple: true } %>
@@ -20,7 +20,6 @@
         <td><%= f.input :folder_id, collection: @indented_folder_list,
         include_blank: true, label: false %></td>
       </tr>
-      <tr>
       <tr>
       <th>What kind of document is it ?</th>
         <td colspan="2"><%= f.association :types, as: :check_boxes,
