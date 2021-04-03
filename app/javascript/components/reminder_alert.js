@@ -27,7 +27,7 @@ const alertReminder = () => {
 };
 
 const stringToDate = (str) => {
-  const arr = str.value.split(".");
+  const arr = str.value.split("/");
   return new Date(arr[2], arr[1] - 1, arr[0]);
 }
 
