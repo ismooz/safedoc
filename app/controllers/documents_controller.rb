@@ -37,7 +37,9 @@ class DocumentsController < ApplicationController
 
   def update
     @document = Document.find(params[:id])
-    @document.update(params[:document])
+    authorize @document
+    @document.update(document_params)
+    redirect_to @document
   end
 
   def create
