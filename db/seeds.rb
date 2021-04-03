@@ -15,28 +15,25 @@ user_ids = User.all.map { |user| user.id }
 
 puts "users finished!"
 
-folder_1 = Folder.create(name: "Privé")
-Folder.create(name: "Administration", folder_id: folder_1.id)
-Folder.create(name: "Famille", folder_id: folder_1.id)
-Folder.create(name: "Ménage", folder_id: folder_1.id)
-Folder.create(name: "Santé", folder_id: folder_1.id)
+folder_1 = Folder.create(name: "Private")
+Folder.create(name: "Home", folder_id: folder_1.id)
+Folder.create(name: "Health", folder_id: folder_1.id)
+Folder.create(name: "Car", folder_id: folder_1.id)
 
-folder_2 = Folder.create(name: "Professionnel")
-Folder.create(name: "Travail", folder_id: folder_2.id)
-Folder.create(name: "Formations", folder_id: folder_2.id)
-Folder.create(name: "Postulations", folder_id: folder_2.id)
+folder_2 = Folder.create(name: "Business")
+Folder.create(name: "Projects", folder_id: folder_2.id)
+Folder.create(name: "Education", folder_id: folder_2.id)
 
-folder_3 = Folder.create(name: "Autres")
+folder_3 = Folder.create(name: "Others")
 
 folder_ids = Folder.all.map { |folder| folder.id }
 
 puts "folders finished!"
 
-types = [{ name: "Contrat"},
-         { name: "Facture"},
-         { name: "Certificat"},
-         { name: "Garantie"},
-         { name: "Identité"},
+types = [{ name: "Contract"},
+         { name: "Bill/Warranty"},
+         { name: "Certificate"},
+         { name: "Identity"},
          { name: "Communication"}]
 
 types.each do |type|
