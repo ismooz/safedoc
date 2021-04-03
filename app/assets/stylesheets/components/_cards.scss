@@ -47,7 +47,8 @@
     padding: 1em;
     top: -5em;
     color: white;
-    background-color: $m-blue;
+    background-color: #42a5f5;
+    text-shadow: 0 0 3px rgba(255,255,255, 0.4)
   }
   &:hover {
     box-shadow: 0 0 25px rgb(135,206,250);
@@ -139,15 +140,19 @@
 
 @media (max-width: 893px) {
   .card-product {
-    margin-bottom: -20px !important;
+    margin-bottom: 15px !important;
     height: 200px;
     width: 80%;
     margin: auto;
+    border-radius: 30px;
     img {
       height: 200px;
+      border-radius: 30px;
     }
     .card-product-infos {
       padding-bottom: 20px;
+      border-bottom-left-radius: 30px;
+      border-bottom-right-radius: 30px;
     }
   }
 
