@@ -22,10 +22,10 @@
       </tr>
       <tr>
       <tr>
-      <th>What kind of document is it ?</th>
-        <td colspan="2"><%= f.association :types, as: :check_boxes,
-            required: true,
-            input_html: { class: "tag-selector" }, item_wrapper_class: 'tag-item' %></td>
+        <th>What kind of document is it ?</th>
+        <td><%= f.association :types, as: :check_boxes,
+          required: true,
+          input_html: { class: "tag-selector" }, item_wrapper_class: 'tag-item' %></td>
       </tr>
       <tr>
         <th>Deadline</th>
