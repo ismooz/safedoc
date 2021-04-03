@@ -11,8 +11,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # POST /resource
   def create
-    # binding.pry
-    raise
 
     super
     @user = User.new(configure_sign_up_params) # pquoi ça marche alors que ce n'est pas un string
