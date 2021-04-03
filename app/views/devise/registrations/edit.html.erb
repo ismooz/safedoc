@@ -42,6 +42,14 @@
                         hint: "we need your current password to confirm your changes",
                         required: true,
                         input_html: { autocomplete: "current-password" } %>
+
+
+            <%= f.input :accepts,     as: :radio_buttons %>
+
+            <%= f.input :gdpr_confirmation,
+                        required: true,
+                        input_html: { autocomplete: "new-password" } %>
+
             <%= f.button :submit, "Update", class: "btn btn-primary"%>
         <% end %>
         <hr>

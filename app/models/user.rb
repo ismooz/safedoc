@@ -12,10 +12,11 @@ class User < ApplicationRecord
 
 
   # validations
-  # validates :first_name, presence: true
-  # validates :last_name, presence: true
-  # validates :birthdate, presence: true
-  # validates :address, presence: true
-  # validates :profile_image, presence: true
+  validates :first_name, presence: true
+  validates :last_name, presence: true
+  validates :birthdate, presence: true
+  validates :address, presence: true
+  validates :profile_image, presence: true
+  # validates :gdpr, presence: true
 
 end
