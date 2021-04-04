@@ -1,7 +1,7 @@
 
 <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
   <h1 class="display-4">Pricing</h1>
-  <p class="lead">Quickly build an effective pricing table for your potential customers with this Bootstrap example. It's built with default Bootstrap components and utilities with little customization.</p>
+  <p class="lead">You can choose your plan according to your needs. Your data are safe and available at all times.</p>
 </div>
 
 <div class="container">
@@ -11,14 +11,15 @@
       <h4 class="my-0 font-weight-normal">Free</h4>
     </div>
     <div class="card-body">
-      <h1 class="card-title pricing-card-title">$0 <small class="text-muted">/ mo</small></h1>
-      <ul class="list-unstyled mt-3 mb-4">
-        <li>10 users included</li>
-        <li>2 GB of storage</li>
-        <li>Email support</li>
-        <li>Help center access</li>
+      <h1 class="card-title pricing-card-title">CHF 0 <small class="text-muted">/ mo</small></h1>
+      <ul class="list-unstyled text-left ml-5 mt-3 mb-4">
+        <li><i class="fas fa-check"></i> users included</li>
+        <li><i class="fas fa-check"></i> 1 GB of storage</li>
+        <li class="text-muted"><i class="fas fa-times"></i> OCR document</li>
+        <li><i class="fas fa-check"></i> Email support</li>
+        <li class="text-muted"><i class="fas fa-times"></i> Help center access</li>
       </ul>
-      <button type="button" class="btn btn-lg btn-block btn-outline-primary">Sign up for free</button>
+      <%= link_to "Sign up for free", new_user_registration_path, class: "btn btn-lg btn-block btn-outline-info" %>
     </div>
   </div>
   <div class="card mb-4 box-shadow">
@@ -26,14 +27,15 @@
       <h4 class="my-0 font-weight-normal">Pro</h4>
     </div>
     <div class="card-body">
-      <h1 class="card-title pricing-card-title">$15 <small class="text-muted">/ mo</small></h1>
-      <ul class="list-unstyled mt-3 mb-4">
-        <li>20 users included</li>
-        <li>10 GB of storage</li>
-        <li>Priority email support</li>
-        <li>Help center access</li>
+      <h1 class="card-title pricing-card-title">CHF 9 <small ass="text-muted"cl>/ mo</small></h1>
+      <ul class="list-unstyled text-left ml-5 mt-3 mb-4">
+        <li><i class="fas fa-check"></i> 5 users included</li>
+        <li><i class="fas fa-check"></i> 10 GB of storage</li>
+        <li><i class="fas fa-check"></i> OCR document</li>
+        <li><i class="fas fa-check"></i> Priority email support</li>
+        <li><i class="fas fa-check"></i> Help center access</li>
       </ul>
-      <button type="button" class="btn btn-lg btn-block btn-primary">Get started</button>
+      <%= link_to "Get started", new_user_registration_path, class: "btn btn-lg btn-block btn-info" %>
     </div>
   </div>
   <div class="card mb-4 box-shadow">
@@ -41,14 +43,24 @@
       <h4 class="my-0 font-weight-normal">Enterprise</h4>
     </div>
     <div class="card-body">
-      <h1 class="card-title pricing-card-title">$29 <small class="text-muted">/ mo</small></h1>
-      <ul class="list-unstyled mt-3 mb-4">
-        <li>30 users included</li>
-        <li>15 GB of storage</li>
-        <li>Phone and email support</li>
-        <li>Help center access</li>
+      <h1 class="card-title pricing-card-title">CHF 29 <small class="text-muted">/ mo</small></h1>
+      <ul class="list-unstyled text-left ml-5 mt-3 mb-4">
+        <li><i class="fas fa-check"></i> +10 users included</li>
+        <li><i class="fas fa-check"></i> 50 GB of storage</li>
+        <li><i class="fas fa-check"></i> OCR document</li>
+        <li><i class="fas fa-check"></i> Phone and email support</li>
+        <li><i class="fas fa-check"></i> Help center access</li>
       </ul>
-      <button type="button" class="btn btn-lg btn-block btn-primary">Contact us</button>
+      <%= link_to "Contact us", new_user_registration_path, class: "btn btn-lg btn-block btn-info" %>
     </div>
   </div>
 </div>
+
+ <div>
+    <br>
+    <hr class="mb-5">
+    <h2 class="text-center">More question ?</h2>
+      <div class="text-center">
+        <%= link_to "Contact us", new_user_registration_path, class: "text-center btn btn-lg btn-info" %>
+      </div>
+  </div>

@@ -1,1 +1,37 @@
 // Specific CSS for your home-page
+@keyframes opacity {
+  from {opacity: 0;}
+  to {opacity: 1;}
+
+}
+
+@keyframes lr {
+    from { transform : translateX(-4em); }
+    to   { transform : translateX(0em); }
+}
+
+@keyframes ud {
+    from { transform : translateY(-4em); }
+    to   { transform : translateY(0em); }
+}
+
+.img1-homepage {
+  animation-name    : opacity   , lr    ;
+  animation-duration: 2s      , 3s     ;
+}
+
+.text1-hompage {
+  animation-name    : opacity   , ud    ;
+  animation-duration: 2s      , 3s     ;
+}
+
+.title1 {
+  animation-name    : opacity;
+  animation-duration: 2s;
+}
+
+.card-product {
+  animation-name    : opacity;
+  animation-duration: 2s;
+}
+
