@@ -34,8 +34,8 @@ window.addEventListener('load', () => {
    openFolder();
    sidebar();
    initFlatpickr();
-   calculate(30); // reminder date is set 30 days back
-   alertDeadline();
-   alertReminder();
+   // calculate(30); // reminder date is set 30 days back
+   // alertDeadline();
+   // alertReminder();
    updateNbFiles();
   });
