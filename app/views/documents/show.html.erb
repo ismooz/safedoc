@@ -18,7 +18,7 @@
     <!-- end display breadcrumb -->
 
     <!-- start display card -->
-      <div class="card">
+      <div>
 
         <h5 class="card-header text-center pb-0">
           <%= @name %>
@@ -44,7 +44,7 @@
             <!-- preview -->
             <div class="card photo">
               <a href="#" role="button" data-toggle="modal" data-target="#exampleModalCenter">
-              <%= cl_image_tag(@thumb_key, :gravity=>"auto", :width=>600, :aspect_ratio=>"16:9", :crop=>"fill", class: "card-img-top") %>
+              <%= cl_image_tag(@thumb_key) %>
               <div class="bottom-right"><i class="fas fa-search-plus"></i></div>
               </a>
               <div class="card-body top-solid">

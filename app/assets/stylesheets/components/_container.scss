@@ -1,6 +1,7 @@
-@media only screen and (max-width: 576px) {
-  .container {
-    height: 78vh;
-    overflow-y: scroll;
-  }
+.container {
+  max-width: 800px;
+  min-height: 100vh;
+  margin: 60px auto;
+  // overflow-y: scroll;
 }
+
