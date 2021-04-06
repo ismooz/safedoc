@@ -1,0 +1,50 @@
+[
+  {
+    "filename": "fasting.jpg",
+    "name": "Fasting bill",
+    "type": "Bill/Warranty",
+    "deadline": "31/12/2021",
+    "reminder": "30/11/2021",
+    "folder": "Private/Health"
+  },
+  {
+    "filename": "bike.jpg",
+    "name": "City bike warranty",
+    "type": "Bill/Warranty",
+    "deadline": "30/11/2022",
+    "reminder": "31/10/2022",
+    "folder": "Private/Home"
+  },
+  {
+    "filename": "dextra.jpg",
+    "name": "Dextra contract",
+    "type": "Contract",
+    "deadline": "31/12/2021",
+    "reminder": "30/11/2021",
+    "folder": "Private/Home"
+  },
+  {
+    "filename": "identity.jpg",
+    "name": "Identity card",
+    "type": "Identity",
+    "deadline": "31/12/2030",
+    "reminder": "31/10/2030",
+    "folder": "Private/Admin"
+  },
+  {
+    "filename": "house.jpg",
+    "name": "House plan",
+    "type": "Other",
+    "deadline": "",
+    "reminder": "",
+    "folder": "Private/Home"
+  },
+  {
+    "filename": "resume.jpg",
+    "name": "CV",
+    "type": "Other",
+    "deadline": "",
+    "reminder": "",
+    "folder": "Business/Admin"
+  }
+]
