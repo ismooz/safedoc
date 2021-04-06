@@ -2,6 +2,13 @@
   max-width: 1024px;
   min-height: 100vh;
   margin: 60px auto;
-  // overflow-y: scroll;
+  overflow-y: scroll;
 }
 
+@media (max-width: 587px) {
+  .container {
+    margin-top: 0;
+    margin-bottom: 10vh;
+
+  }
+}
