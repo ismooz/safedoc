@@ -6,22 +6,22 @@
     <br>
 
     <div class="row">
-      <% if @document.length > 0 %>
-        <% @document.each do |doc| %>
+      <% if @documents_sorted_creation.length > 0 %>
+        <% @documents_sorted_creation.each do |document| %>
 
           <div class="col-xs-12 col-md-6 col-lg-4">
 
             <div class="card-product">
-              <%= link_to doc do %>
+              <%= link_to document do %>
 
                 <div>
-                  <%= cl_image_tag(doc.photos.first.key) %>
+                  <%= cl_image_tag(document.photos.first.key) %>
 
                   <div class="card-product-infos">
 
                     <div>
-                      <h2><%= doc.name %></h2>
-                      <p><%= "Created at #{doc.created_at.strftime("%d.%m.%Y")}" %></p>
+                      <h2><%= document.name %></h2>
+                      <p><%= "Created at #{ document.created_at.strftime("%d.%m.%Y") }" %></p>
                     </div>
 
                     <i class="far fa-eye"></i>
@@ -56,18 +56,18 @@
     <br>
 
     <div class="row">
-      <% if @docu_ddl.length > 0 %>
-        <% @docu_ddl.each do |doc| %>
+      <% if @documents_sorted_deadline.length > 0 %>
+        <% @documents_sorted_deadline.each do |document| %>
           <div class="col-xs-12 col-md-6 col-lg-4">
             <div class="card-product">
-              <%= link_to doc do %>
+              <%= link_to document do %>
                 <div>
-                  <%= cl_image_tag(doc.photos.first.key) %>
+                  <%= cl_image_tag(document.photos.first.key) %>
                 </div>
                 <div class="card-product-infos">
                   <div>
-                    <h2><%= doc.name %></h2>
-                    <p><%= "Expire at #{doc.deadline.strftime("%d.%m.%Y")}" %></p>
+                    <h2><%= document.name %></h2>
+                    <p><%= "Expire at #{document.deadline.strftime("%d.%m.%Y")}" %></p>
                   </div>
                 </div>
               <% end %>
