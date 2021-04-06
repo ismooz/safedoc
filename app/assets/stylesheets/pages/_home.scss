@@ -10,6 +10,11 @@
     to   { transform : translateX(0em); }
 }
 
+@keyframes rl {
+    from { transform : translateX(4em); }
+    to   { transform : translateX(0em); }
+}
+
 @keyframes ud {
     from { transform : translateY(-4em); }
     to   { transform : translateY(0em); }
@@ -17,6 +22,13 @@
 
 .img1-homepage {
   animation-name    : opacity   , lr     ;
+  animation-duration: 2s        , 3s     ;
+}
+
+.img2-homepage {
+  border-radius: 5px;
+  box-shadow: 0 0 12px rgba(0,0,0,0.3);
+  animation-name    : opacity   , rl     ;
   animation-duration: 2s        , 3s     ;
 }
 
@@ -35,3 +47,14 @@
   animation-duration: 2s;
 }
 
+@media (max-width: 576px) {
+  .img1-homepage, .img2-homepage {
+  max-height: 180px;
+  margin: auto;
+
+  }
+  .img2-homepage {
+    max-width: 100px;
+  }
+
+}

@@ -1,0 +1,45 @@
+@keyframes lr {
+    from { transform : translateX(-4em); }
+    to   { transform : translateX(0em); }
+}
+
+@keyframes rl {
+    from { transform : translateX(4em); }
+    to   { transform : translateX(0em); }
+}
+
+@keyframes opacity {
+  from {opacity: 0;}
+  to {opacity: 1;}
+
+}
+
+.hr-title-about {
+  max-width: 60px;
+  border: 5px solid grey;
+  margin: 0 20px;
+  animation-name    : opacity   , lr     ;
+  animation-duration: 2s        , 3s     ;
+
+}
+
+// .hr-dotted {
+//   max-width: 60px;
+//   content: "\2022 \0001 \2022 \2022";
+//   animation-name    : opacity   , rl     ;
+//   animation-duration: 2s        , 3s     ;
+// }
+
+.hr-dotted {
+  margin: 20px 0;
+  border: 0;
+  text-align: center;
+  animation-name    : opacity   , rl     ;
+  animation-duration: 2s        , 3s     ;
+
+  &:before {
+    content: "\2022 \0001 \2022 \2022";
+    font-size: 40px;
+    color: rgba(0,0,0,0.3);
+  }
+}

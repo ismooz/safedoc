@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:home, :pricing]
+  skip_before_action :authenticate_user!, only: [:home, :pricing, :faq, :gpdr, :about]
 
   def home
     @documents_sorted_creation = Document.all.order(created_at: :asc).take(3)
@@ -10,11 +10,12 @@ class PagesController < ApplicationController
   end
 
   def faq
-
   end
 
   def gdpr
+  end
 
+  def about
   end
 
 end

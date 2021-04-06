@@ -1,7 +1,9 @@
 .container {
   max-width: 1024px;
   min-height: 100vh;
-  margin: 60px auto;
+  height: 100%;
+  padding: 60px;
+  background-color: white;
   overflow-y: scroll;
 }
 

@@ -14,14 +14,14 @@
         <li class="nav-item">
           <%= link_to "Home", root_path, class: "nav-link text-info" %>
         </li>
-          <li class="nav-item">
-          <%= link_to "FAQ", faq_path, class: "nav-link text-info" %>
-        </li>
         <li class="nav-item">
           <%= link_to "New document", new_document_path, class: "nav-link text-info" %>
         </li>
         <li class="nav-item">
           <%= link_to "Folders", folders_path, class: "nav-link text-info" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "FAQ", faq_path, class: "nav-link text-info" %>
         </li>
         <li class="nav-item dropdown">
           <% if current_user.profile_image.attached? %>
@@ -43,7 +43,7 @@
           <%= link_to "Pricing", pricing_path, class: "nav-link text-info" %>
         </li>
         <li class="nav-item">
-          <%= link_to "About us", folders_path, class: "nav-link text-info mr-5" %>
+          <%= link_to "About us", about_path, class: "nav-link text-info" %>
         </li>
         <li class="nav-item">
           <%= link_to "FAQ", faq_path, class: "nav-link text-info mr-5" %>
