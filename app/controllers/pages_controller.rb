@@ -8,4 +8,13 @@ class PagesController < ApplicationController
 
   def pricing
   end
+
+  def faq
+
+  end
+
+  def gdpr
+
+  end
+
 end
