@@ -1,9 +1,11 @@
 
-<% if user_signed_in? %>
-  <div class="pt-5 mb-5">
+<div class="container bg-white">
 
-    <h2>📄 My last documents saved</h2>
-    <br>
+  <% if user_signed_in? %>
+    <div class="pt-5 mb-5">
+
+      <h2>📄 My last documents saved</h2>
+      <br>
 
     <div class="row">
       <% if @documents_sorted_creation.length > 0 %>
@@ -131,6 +133,7 @@
 
     </div>
   <% end %>
+</div>
 
 
 
