@@ -1,6 +1,5 @@
 require 'open-uri'
 require 'nokogiri'
-require 'json'
 
 Type.destroy_all
 Document.destroy_all
@@ -47,39 +46,25 @@ end
 
 puts "Types finished!"
 
-doc_samples_path = File.expand_path(".", Dir.pwd) + "/app/assets/images/doc_samples"
-file_path = doc_samples_path + "/data.json"
+images_path = File.expand_path(".", Dir.pwd) + "/app/assets/images/doc_samples"
+puts images_path
 
-serialized_documents = File.read(file_path)
-documents = JSON.parse(serialized_documents)
+date_1 = "2022/02/15"
+date_2 = "2023/07/11"
+date_3 = "2024/11/22"
 
-documents.each do |document|
-  # metadata
-  d = Document.new
-  d.name = document["name"]
+dates = [date_1, date_2, date_3]
 
-  document["deadline"] == "" ? d.deadline = "31/12/2025" : d.deadline = document["deadline"]
-  document["reminder"] == "" ? d.reminder = "31/10/2025" : d.reminder = document["reminder"]
+Dir.glob(images_path + "/*").each do |f|
+  filename_wo_extension = File.basename(f, ".jpg")
+  filename = File.basename(f)
+  filepath = File.path(f)
+  file = File.open(filepath)
 
-  d.user = User.all.sample # we choose a random user...
-  folder_name = document["folder"].split("/").last
-  folder = Folder.where(name: folder_name).first
-  d.folder = folder
-  
-  # attachment
-  image_path = doc_samples_path + "/" + document["filename"]
-  file = File.open(image_path)
-  d.photos.attach(io: file, filename: document["filename"], content_type: "image/jpg")
-  d.save!
-
-  # type
-  type = Type.where(name: document["type"]).first
-  dt = DocumentType.new
-  dt.document = d
-  dt.type = type
-  dt.save!
-
-  puts "document #{d.name} saved"
+  document = Document.new(name: "#{filename_wo_extension}", deadline: dates.sample, reminder: "2022/02/05", user_id: user_ids.sample, folder_id: folder_ids.sample)
+  document.photos.attach(io: file, filename: "#{filename_wo_extension}", content_type: "image/jpg")
+  document.save!
+  puts "Created document id #{document.id}"
 end
 
 puts "seed finished!"
