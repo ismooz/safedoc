@@ -11,12 +11,14 @@ class DocumentsController < ApplicationController
     @breadcrumb = generate_breadcrumb(folder, breadcrumb)
 
     # doc infos
-    @deadline = @document.deadline.strftime("Document expiry: %d %B %Y")
+    @deadline = @document.deadline.strftime("Expiry: %d %B %Y")
+    @reminder = @document.reminder.strftime("Reminder: %d %B %Y")
     @updated_at = @document.updated_at.strftime("Last updated: %d %B %Y")
     @name = @document.name
     @thumb_key = @document.photos.first.key
     @pages = @document.photos.size
     @download_key = @document.photos.last.key
+    @tags = @document.types
   end
 
   def new
@@ -24,6 +26,20 @@ class DocumentsController < ApplicationController
     authorize @document
     folders = Folder.all
     @indented_folder_list = generate_array(folders)
+  end
+
+  def edit
+    @document = Document.find(params[:id])
+    authorize @document
+    folders = Folder.all
+    @indented_folder_list = generate_array(folders)
+  end
+
+  def update
+    @document = Document.find(params[:id])
+    authorize @document
+    @document.update(document_params)
+    redirect_to @document
   end
 
   def create

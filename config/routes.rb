@@ -5,6 +5,6 @@ Rails.application.routes.draw do
   get 'gdpr', to: 'pages#gdpr'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   resources :folders, only: [:index, :show]
-  resources :documents, only: [:show, :new, :create]
-
+  resources :documents, only: [:show, :new, :create, :edit, :update]
+  get "/pricing", to: "pages#pricing"
 end

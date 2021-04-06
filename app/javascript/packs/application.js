@@ -25,19 +25,17 @@ import "bootstrap";
 import { openFolder } from '../components/folder';
 import { sidebar } from '../components/sidebar';
 import { initFlatpickr } from "../plugins/flatpickr";
-import { initSelect2 } from '../plugins/init_select2';
 import { calculate } from '../components/reminder';
 import { alertDeadline, alertReminder } from '../components/reminder_alert';
 import { updateNbFiles } from '../components/notification';
 
 
 window.addEventListener('load', () => {
-   initSelect2();
    openFolder();
    sidebar();
    initFlatpickr();
-   calculate(10); // reminder date is set 10 days back
-   alertDeadline();
-   alertReminder();
+   // calculate(30); // reminder date is set 30 days back
+   // alertDeadline();
+   // alertReminder();
    updateNbFiles();
   });
