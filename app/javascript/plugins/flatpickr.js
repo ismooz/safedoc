@@ -10,6 +10,9 @@ const initFlatpickr = () => {
       dateFormat: "d/m/Y",
       defaultDate: findDate("document_reminder")
     });
+  }else{flatpickr(".datepicker", {
+      dateFormat: "d/m/Y",
+    });
   }
 }
 
