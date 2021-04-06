@@ -1,57 +1,73 @@
 
 <% if user_signed_in? %>
   <div class="pt-5 mb-5">
+
     <h2>📄 My last documents saved</h2>
     <br>
 
     <div class="row">
-      <% if @document.length > 0 %>
-        <% @document.each do |doc| %>
+      <% if @documents_sorted_creation.length > 0 %>
+        <% @documents_sorted_creation.each do |document| %>
+
           <div class="col-xs-12 col-md-6 col-lg-4">
+
             <div class="card-product">
-              <%= link_to doc do %>
+              <%= link_to document do %>
+
                 <div>
-                  <%= cl_image_tag(doc.photos.first.key) %>
+                  <%= cl_image_tag(document.photos.first.key) %>
+
                   <div class="card-product-infos">
+
                     <div>
-                      <h2><%= doc.name %></h2>
-                      <p><%= "Created at #{doc.created_at.strftime("%d.%m.%Y")}" %></p>
+                      <h2><%= document.name %></h2>
+                      <p><%= "Created at #{ document.created_at.strftime("%d.%m.%Y") }" %></p>
                     </div>
+
                     <i class="far fa-eye"></i>
                   </div>
+
                 </div>
+
               <% end %>
             </div>
           </div>
         <% end %>
       <% else %>
+
         <div class="col-xs-12 col-md-6 col-lg-4">
+
           <div>
             <em>No documents added yet...</em>
             <%= link_to '<i class="fas fa-plus"></i> Add a new doc'.html_safe, new_document_path, class: "btn btn-primary"  %>
           </div>
+
         </div>
       <% end %>
     </div>
+
   </div>
+
   <hr>
+
   <div>
+
     <h2>🔔 Next upcoming deadlines</h2>
     <br>
 
     <div class="row">
-      <% if @docu_ddl.length > 0 %>
-        <% @docu_ddl.each do |doc| %>
+      <% if @documents_sorted_deadline.length > 0 %>
+        <% @documents_sorted_deadline.each do |document| %>
           <div class="col-xs-12 col-md-6 col-lg-4">
             <div class="card-product">
-              <%= link_to doc do %>
+              <%= link_to document do %>
                 <div>
-                  <%= cl_image_tag(doc.photos.first.key) %>
+                  <%= cl_image_tag(document.photos.first.key) %>
                 </div>
                 <div class="card-product-infos">
                   <div>
-                    <h2><%= doc.name %></h2>
-                    <p><%= "Expire at #{doc.deadline.strftime("%d.%m.%Y")}" %></p>
+                    <h2><%= document.name %></h2>
+                    <p><%= "Expire at #{document.deadline.strftime("%d.%m.%Y")}" %></p>
                   </div>
                 </div>
               <% end %>
@@ -71,11 +87,29 @@
   <% else %>
 
   <div class="pt-5">
-    <div class="row col-md-10">
-      <h2>Need help keeping track with paperwork</h2>
-      <div><em>"Safedoc is an app designed to help you keep all your important documents at the same place and healp you manage your contract's deadlines"</em><div/>
+
+    <div class="row col-md-10 title1 mb-5">
+      <h2>Need help keeping track with paperwork ?</h2>
+
+      <div>
+        <em>"Safedoc is an app designed to help you keep all your important documents at the same place and healp you manage your contract's deadlines"</em>
+      </div>
+
     </div>
-  </div>
+
+        <hr>
+
+      <div class="d-flex mt-5">
+        <%= image_tag "iphone.png", style: "height:400px;width:auto;", class: "img1-homepage"%>
+
+        <div class="ml-5 my-auto text1-hompage">
+          <h2>Scan with your smartphone</h2>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur obcaecati repellat dolores pariatur? Nostrum qui, obcaecati nemo natus asperiores odio aliquid nam ea repellat et quidem voluptate eum vel dolores.</p>
+        </div>
+
+      </div>
+
+    </div>
   <% end %>
 
 

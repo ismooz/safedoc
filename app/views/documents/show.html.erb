@@ -1,4 +1,5 @@
 <div class="row justify-content-center">
+
   <div class="col-sm-10 form m-0 m-sm-5">
     <!-- display breadcrumb -->
     <nav aria-label="breadcrumb">
@@ -15,28 +16,43 @@
       </ol>
     </nav>
     <!-- end display breadcrumb -->
+
     <!-- start display card -->
       <div class="card">
-        <h5 class="card-header"><%= @name %>
-          <% if @tags %>
-            <% @tags.each do |tag| %>
-              <label class="saved-tag"><%= tag.name %></label>
+
+        <h5 class="card-header text-center pb-0">
+          <%= @name %>
+            <span class="ml-2">
+              <%= link_to(:action => 'edit') do %>
+                <i class="fa fa-edit fa"></i>
+              <% end %>
+            </span>
+          <p>
+            <% if @tags %>
+              <% @tags.each do |tag| %>
+                <label class="saved-tag"><%= tag.name %></label>
+              <% end %>
             <% end %>
-          <% end %>
+          </p>
         </h5>
-        <div class="card-body">
-          <p class="card-text"><%= @deadline %></p>
-          <!-- preview -->
-          <div class="card photo">
-            <a href="#" role="button" data-toggle="modal" data-target="#exampleModalCenter">
-            <%= cl_image_tag(@thumb_key, :gravity=>"auto", :width=>400, :aspect_ratio=>"16:9", :crop=>"fill", class: "card-img-top") %>
-            <div class="bottom-right"><i class="fas fa-search-plus"></i></div>
-            </a>
-            <div class="card-body top-solid">
-              <a href="<%= cloudinary_url(@download_key, :flags => "attachment") %>" class="btn btn-info text-white">Downlaod document</a>
+
+        <div class="card-body d-flex justify-content-center">
+          <div>
+            <div class="card-text text-center mb-3">
+              <%= @deadline %>
+            </div>
+            <!-- preview -->
+            <div class="card photo">
+              <a href="#" role="button" data-toggle="modal" data-target="#exampleModalCenter">
+              <%= cl_image_tag(@thumb_key, :gravity=>"auto", :width=>600, :aspect_ratio=>"16:9", :crop=>"fill", class: "card-img-top") %>
+              <div class="bottom-right"><i class="fas fa-search-plus"></i></div>
+              </a>
+              <div class="card-body top-solid">
+                <a href="<%= cloudinary_url(@download_key, :flags => "attachment") %>" class="btn btn-info text-white">Downlaod document</a>
+              </div>
             </div>
           </div>
-        </div>
+         </div>
       </div>
 
 
