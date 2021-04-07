@@ -37,7 +37,10 @@
           <%= f.input :password_confirmation,
                       required: true,
                       input_html: { autocomplete: "new-password" } %>
-        </div>
+          <%= f.input :chk_box_validation, label: (link_to 'I agree to the GDPR compliance ', '#gdprModal', :class => 'link', 'data-toggle' => 'modal') %>
+
+        <!-- Modal -->
+           <%= render 'shared/gdpr' %>
 
         <div class="form-actions">
           <%= f.button :submit, "Sign up", class: "btn btn-primary float-right" %>
