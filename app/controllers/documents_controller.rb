@@ -63,7 +63,7 @@ class DocumentsController < ApplicationController
   def index
     @documents = policy_scope(Document).order(deadline: :asc)
 
-    if params[:query] && ! params[:query].empty?
+    if params[:query].present?
       sql_query = "name @@ :query"
       @documents = Document.where(sql_query, query: "%#{params[:query]}%")
     else
