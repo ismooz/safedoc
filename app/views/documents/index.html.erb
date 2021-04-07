@@ -1,4 +1,17 @@
 <div class="container bg-white">
+<!-- start of search bar -->
+  <form class="form" action="/documents">
+    <div class="input-group pt-3">
+      <input class="form-control" type="search" name="query" value="<%= params[:query] %>" placeholder="Search by name" aria-label="Search">
+      <div class="input-group-append">
+        <button class="btn btn-secondary" type="submit">
+          <i class="fa fa-search"></i>
+        </button>
+      </div>
+    </div>
+  </form>
+
+<!-- end of search bar -->
   <div class="row">
     <% @documents.each do |document| %>
 

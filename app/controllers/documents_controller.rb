@@ -62,6 +62,16 @@ class DocumentsController < ApplicationController
 
   def index
     @documents = policy_scope(Document).order(deadline: :asc)
+    # search with associations
+    if params[:query].present?
+      sql_query = " \
+        documents.name ILIKE :query \
+        OR types.name ILIKE :query \
+      "
+      @documents = Document.joins(:types).joins(:document_types).where(sql_query, query: "%#{params[:query]}%")
+    else
+      @documents = Document.all.take(50)
+    end
   end
 
   private
