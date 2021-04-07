@@ -8,4 +8,8 @@ Rails.application.routes.draw do
   resources :folders, only: [:index, :show]
   resources :documents, only: [:show, :new, :create, :edit, :update]
   get "/pricing", to: "pages#pricing"
+
+  get "/faq", to: "pages#faq"
+
+  get "/gdpr", to: "pages#gdpr"
 end

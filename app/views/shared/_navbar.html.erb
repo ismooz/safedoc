@@ -30,9 +30,16 @@
             <%= image_tag "default-avatar.jpg", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
           <% end %>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+<<<<<<< HEAD
+            <%= link_to "Pricing", pricing_path, class: "dropdown-item" %>
+            <%= link_to "FAQ", faq_path, class: "dropdown-item" %>
+            <%= link_to "Edit profile", edit_user_registration_path, class: "dropdown-item" %>
+            <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+=======
             <%= link_to "Pricing", pricing_path, class: "dropdown-item text-info" %>
             <%= link_to "Edit profile", edit_user_registration_path, class: "dropdown-item text-info" %>
             <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item text-info" %>
+>>>>>>> master
           </div>
         </li>
       <% else %>
