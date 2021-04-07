@@ -1,19 +1,21 @@
 
 .card-product {
-  height: 300px;
-  border-top-right-radius: 30px;
-  border-top-left-radius: 30px;
+  overflow: hidden;
+  background: white;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  border-radius: 5px;
+  margin-bottom: 20px;
+
 
   a {
     text-decoration: none;
     color: black;
   }
   img {
-    height: 300px;
+    height: 200px;
     width: 100%;
-    box-shadow: 0 0 15px rgba(0,0,0,0.2);
-    border-top-right-radius: 30px;
-    border-top-left-radius: 30px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
     object-fit: cover;
     object-position: 0 0;
     &:hover {
@@ -22,7 +24,7 @@
       }
   }
   h2 {
-    font-size: 16px;
+    font-size: 12px;
     font-weight: bold;
   }
   p {
@@ -33,26 +35,18 @@
   i {
     font-size: 2em;
     opacity: 0;
-
   }
   .card-product-infos {
-    height: 5em;
-    box-shadow: 0px -20px 40px -20px rgba(0, 0, 0, .6);
-    border-top-right-radius: 10px;
-    border-top-left-radius: 10px;
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
     position: relative;
     padding: 1em;
-    top: -5em;
     color: $m-blue;
-    backdrop-filter: blur(8px) !important;
-    text-shadow: 0 0 3px rgba(0,0,0, 0.4);
-
+    background-color: white;
   }
   &:hover {
-    box-shadow: 0 0 25px rgb(135,206,250);
+     box-shadow: 0 0 25px rgba(0,0,0,0.4);
     transition-duration: .4s;
     i {
       opacity: 0.7;
@@ -62,50 +56,16 @@
 }
 
 
-
-// CARD CATEGORY //
-
-// .card-category {
-//   background-size: cover;
-//   background-position: center;
-//   height: 300px;
-//   width: 200px;
-//   display: flex;
-//   justify-content: center;
-//   align-items: center;
-//   color: white;
-//   font-size: 24px;
-//   font-weight: bold;
-//   text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
-//   border-radius: 5px;
-//   box-shadow: 0 0 15px rgba(0,0,0,0.2);
-//   margin: 30px;
-// }
-
-// .card-category {
-//   background-size: cover;
-//   background-position: center;
-//   height: 400px;
-//   width: 300px;
-//   display: flex;
-//   justify-content: center;
-//   align-items: center;
-//   color: white;
-//   font-size: 24px;
-//   font-weight: bold;
-//   text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
-//   border-radius: 5px;
-//   box-shadow: 0 0 15px rgba(0,0,0,0.2);
-//   margin: 30px;
-// }
-
 // PHOTO CARDS //
 
 .photo {
-  max-width: 40rem;
+  max-width: 30rem;
   img {
-    padding: 16px 16px 0 16px;
-    background-color: #F5F5F5;
+    height: 400px;
+    width: 100%;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    object-fit: cover;
     object-position: 0 0;
   }
 }
@@ -141,19 +101,11 @@
 
 @media (max-width: 893px) {
   .card-product {
-    margin-bottom: 15px !important;
-    height: 200px;
+    margin-bottom: 2rem !important;
     width: 80%;
     margin: auto;
-    border-radius: 30px;
     img {
       height: 200px;
-      border-radius: 30px;
-    }
-    .card-product-infos {
-      padding-bottom: 20px;
-      border-bottom-left-radius: 30px;
-      border-bottom-right-radius: 30px;
     }
   }
 

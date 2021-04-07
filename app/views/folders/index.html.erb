@@ -1,12 +1,14 @@
-<div class="row justify-content-center">
-  <div class="col-sm-10 form m-0 m-sm-5">
-    <h2>My folders</h2>
-    <nav aria-label="breadcrumb">
-      <ol class="breadcrumb">
-        <li class="breadcrumb-item active" aria-current="page"><i class="fas fa-home"></i></li>
-      </ol>
-    </nav>
+<div class="container bg-white">
+  <div class="row justify-content-center">
+    <div class="col-sm-10 form m-0 m-sm-5 pt-5">
+      <h2>My folders</h2>
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item active" aria-current="page"><i class="fas fa-home"></i></li>
+        </ol>
+      </nav>
 
-    <%= render 'shared/folders', folders: @folders %>
-    </div>
+      <%= render 'shared/folders', folders: @folders %>
+      </div>
+  </div>
 </div>

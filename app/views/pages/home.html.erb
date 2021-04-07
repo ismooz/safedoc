@@ -1,9 +1,11 @@
 
-<% if user_signed_in? %>
-  <div class="pt-5 mb-5">
+<div class="container bg-white">
 
-    <h2>📄 My last documents saved</h2>
-    <br>
+  <% if user_signed_in? %>
+    <div class="pt-5 mb-5">
+
+      <h2>📄 My last documents saved</h2>
+      <br>
 
     <div class="row">
       <% if @documents_sorted_creation.length > 0 %>
@@ -23,8 +25,10 @@
                       <h2><%= document.name %></h2>
                       <p><%= "Created at #{ document.created_at.strftime("%d.%m.%Y") }" %></p>
                     </div>
-
-                    <i class="far fa-eye"></i>
+                      <div class="btn-group">
+                        <%= link_to 'View', document_path(document), class: "btn btn-sm btn-outline-secondary rounded-left" %>
+                        <%= link_to 'Edit', edit_document_path(document), class: "btn btn-sm btn-outline-secondary rounded-right" %>
+                      </div>
                   </div>
 
                 </div>
@@ -69,6 +73,10 @@
                     <h2><%= document.name %></h2>
                     <p><%= "Expire at #{document.deadline.strftime("%d.%m.%Y")}" %></p>
                   </div>
+                  <div class="btn-group">
+                    <%= link_to 'View', document_path(document), class: "btn btn-sm btn-outline-secondary rounded-left" %>
+                    <%= link_to 'Edit', edit_document_path(document), class: "btn btn-sm btn-outline-secondary rounded-right" %>
+                  </div>
                 </div>
               <% end %>
             </div>
@@ -86,10 +94,10 @@
 
   <% else %>
 
-  <div class="pt-5">
+  <div class="mb-5">
 
-    <div class="row col-md-10 title1 mb-5">
-      <h2>Need help keeping track with paperwork ?</h2>
+    <div class="title1 mb-5 text-center">
+      <h1>Need help keeping track with paperwork 📄 ? <br> Use Safedoc !</h1>
 
       <div>
         <em>"Safedoc is an app designed to help you keep all your important documents at the same place and healp you manage your contract's deadlines"</em>
@@ -99,17 +107,34 @@
 
         <hr>
 
-      <div class="d-flex mt-5">
+      <div class="d-flex mt-5 mb-5">
         <%= image_tag "iphone.png", style: "height:400px;width:auto;", class: "img1-homepage"%>
 
         <div class="ml-5 my-auto text1-hompage">
-          <h2>Scan with your smartphone</h2>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur obcaecati repellat dolores pariatur? Nostrum qui, obcaecati nemo natus asperiores odio aliquid nam ea repellat et quidem voluptate eum vel dolores.</p>
+          <h2>🖨 Scan with your smartphone</h2>
+          <p>No more constantly losing warranties, contracts and other documents. Get them all in one application. Secure, practical and indispensable. The application "made in 🇨🇭 Switzerland 🇨🇭".</p>
+          <%= link_to "Register now !", new_user_registration_path, class: "btn btn-outline-info" %>
         </div>
+
+      </div>
+
+      <hr>
+
+      <div class="d-flex mt-5">
+
+        <div class="mr-5 my-auto text1-hompage text-right">
+          <h2>🔎 Find your docs !</h2>
+          <p>You can easy find your docs wherever you are. Edit it or just add a reminder to not forgot the deadline...</p>
+          <%= link_to "Register now !", new_user_registration_path, class: "btn btn-outline-info" %>
+        </div>
+        <%= image_tag "doc_preview.png", style: "height:300px;width:auto;", class: "img2-homepage"%>
 
       </div>
 
     </div>
   <% end %>
+</div>
+
+
 
 

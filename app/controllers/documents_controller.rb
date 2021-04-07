@@ -46,7 +46,7 @@ class DocumentsController < ApplicationController
     @document = Document.new(document_params)
     authorize @document
     @document.user = current_user
-    
+
     type_ids = params[:document][:type_ids]
     if @document.save
       type_ids.each do |type_id|
@@ -58,6 +58,11 @@ class DocumentsController < ApplicationController
       @indented_folder_list = generate_array(folders)
       render :new # il faut render pour afficher le message d'erreur
     end
+  end
+
+  def index
+    @documents = Document.all
+    authorize @documents
   end
 
   private

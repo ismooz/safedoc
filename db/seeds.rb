@@ -9,9 +9,9 @@ User.destroy_all
 
 puts "Database cleaned!"
 
-user_1 = User.create(email: "ismael@email.com",  password: "123456", first_name: "FFF", last_name: "LLL", birthdate: "2022-02-15", address: "bbbbbbbbb")
-user_2 = User.create(email: "ivan@email.com",  password: "123456", first_name: "Ivan", last_name: "Perroud", birthdate: "2022-02-15", address: "Chemin Ritter, Fribourg")
-user_3 = User.create(email: "antoine@email.com",  password: "123456", first_name: "FFF", last_name: "LLL", birthdate: "2022-02-15", address: "bbbbbbbbb")
+user_1 = User.create(email: "ismael@email.com",  password: "123456", first_name: "FFF", last_name: "LLL", birthdate: "2022-02-15", address: "bbbbbbbbb", chk_box_validation: true)
+user_2 = User.create(email: "ivan@email.com",  password: "123456", first_name: "Ivan", last_name: "Perroud", birthdate: "2022-02-15", address: "Chemin Ritter, Fribourg", chk_box_validation: true)
+user_3 = User.create(email: "antoine@email.com",  password: "123456", first_name: "FFF", last_name: "LLL", birthdate: "2022-02-15", address: "bbbbbbbbb", chk_box_validation: true)
 user_ids = User.all.map { |user| user.id }
 
 puts "users finished!"
@@ -65,7 +65,7 @@ documents.each do |document|
   folder_name = document["folder"].split("/").last
   folder = Folder.where(name: folder_name).first
   d.folder = folder
-  
+
   # attachment
   image_path = doc_samples_path + "/" + document["filename"]
   file = File.open(image_path)

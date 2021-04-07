@@ -1,30 +1,31 @@
-<div class="row justify-content-center">
-  <div class="col-sm-10 form m-0 m-sm-5">
-    <h2>My folders</h2>
-    <!-- display breadcrumb -->
-    <nav aria-label="breadcrumb">
-      <ol class="breadcrumb">
-        <!-- root -->
-        <li class="breadcrumb-item">
-          <a href="<%= folders_path %>"><i class="fas fa-home fa"></i></a>
-        </li>
-        <!-- other items -->
-        <% @breadcrumb.each_with_index do |folder, index| %>
-          <% if index < @breadcrumb.size - 1 %>
-            <li class="breadcrumb-item"><a href="<%= folder_path(folder) %>"><%= folder.name %></a></li>
-          <% else %>
-            <li class="breadcrumb-item active" aria-current="page"><%= folder.name %></li>
+<div class="container bg-white">
+  <div class="row justify-content-center">
+    <div class="col-sm-10 form m-0 m-sm-5 pt-5">
+      <h2>My folders</h2>
+      <!-- display breadcrumb -->
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <!-- root -->
+          <li class="breadcrumb-item">
+            <a href="<%= folders_path %>"><i class="fas fa-home fa"></i></a>
+          </li>
+          <!-- other items -->
+          <% @breadcrumb.each_with_index do |folder, index| %>
+            <% if index < @breadcrumb.size - 1 %>
+              <li class="breadcrumb-item"><a href="<%= folder_path(folder) %>"><%= folder.name %></a></li>
+            <% else %>
+              <li class="breadcrumb-item active" aria-current="page"><%= folder.name %></li>
+            <% end %>
           <% end %>
-        <% end %>
-      </ol>
-    </nav>
-    <!-- end display breadcrumb -->
+        </ol>
+      </nav>
+      <!-- end display breadcrumb -->
 
-    <!-- display folders and files -->
-    <%= render 'shared/folders', folders: @folders %>
+      <!-- display folders and files -->
+      <%= render 'shared/folders', folders: @folders %>
+    </div>
   </div>
 </div>
-
 
 
 
