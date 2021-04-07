@@ -61,8 +61,7 @@ class DocumentsController < ApplicationController
   end
 
   def index
-    @documents = Document.all
-    authorize @documents
+    @documents = policy_scope(Document).order(deadline: :asc)
   end
 
   private
