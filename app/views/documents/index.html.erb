@@ -1,0 +1,32 @@
+<div class="container bg-white">
+  <div class="row">
+      <% @documents.each do |document| %>
+
+      <div class="col-xs-12 col-md-6 col-lg-4">
+
+        <div class="card-product">
+          <%= link_to document do %>
+
+            <div>
+              <%= cl_image_tag(document.photos.first.key) %>
+
+              <div class="card-product-infos">
+
+                <div>
+                  <h2><%= document.name %></h2>
+                  <p><%= "Created at #{ document.created_at.strftime("%d.%m.%Y") }" %></p>
+                </div>
+                  <div class="btn-group">
+                    <%= link_to 'View', document_path(document), class: "btn btn-sm btn-outline-secondary rounded-left" %>
+                    <%= link_to 'Edit', edit_document_path(document), class: "btn btn-sm btn-outline-secondary rounded-right" %>
+                  </div>
+              </div>
+
+            </div>
+
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
