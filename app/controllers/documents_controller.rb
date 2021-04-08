@@ -81,6 +81,9 @@ class DocumentsController < ApplicationController
     else
       @documents = Document.all.take(50)
     end
+
+    @types = policy_scope(Type).order(name: :asc)
+
   end
 
   private
