@@ -1,6 +1,41 @@
 <div class="container bg-white">
+<!-- start of search bar -->
+  <form class="form row" action="/documents">
+
+    <!-- name field -->
+    <div class="col-md-6 mt-3">
+      <input class="form-control" type="search" name="name"
+                                  value="<%= params[:name] %>"
+                                  placeholder="<%= params[:name] || 'Document name' %>"
+                                  aria-label="Search">
+    </div>
+
+    <!-- type field -->
+    <div class="col-md-6 mt-3">
+      <select class="custom-select" type="search"
+                                    name="type"
+                                    value="<%= params[:type] %>"
+                                    aria-label="Search">
+
+        <option value="">Document type</option>
+        <%= @types.each do |type| %> 
+          <option value="<%= type.name %>"><%= type.name %></option>
+        <% end %>
+      </select>
+    </div>
+
+    <!-- search button -->
+    <div class="col-md-6 mt-3">
+      <button class="btn btn-secondary" type="submit">Search
+        <i class="fa fa-search"></i>
+      </button>
+    </div>
+  </form>
+<!-- end of search bar -->
+
+  <!-- display cards/documents -->
   <div class="row">
-      <% @documents.each do |document| %>
+    <% @documents.each do |document| %>
 
       <div class="col-xs-12 col-md-6 col-lg-4">
 
