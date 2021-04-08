@@ -6,7 +6,7 @@ class Document < ApplicationRecord
   has_many :types, through: :document_types
   validates :name, :deadline, :reminder, :photos, presence: true
 
-   def expire
+  def expire
     @expire = (deadline - Date.current).to_i
   end
 end

@@ -49,4 +49,8 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def set_user_documents
+    @user_documents = Document.where(user: current_user)
+  end
+
 end
