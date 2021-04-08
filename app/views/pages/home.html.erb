@@ -2,7 +2,52 @@
 <div class="container bg-white">
 
   <% if user_signed_in? %>
-    <div class="pt-5 mb-5">
+
+  <div>
+
+    <h2>🔔 Next upcoming deadlines</h2>
+    <br>
+
+    <div class="row">
+      <% if @documents_sorted_deadline.length > 0 %>
+        <% @documents_sorted_deadline.each do |document| %>
+          <div class="col-xs-12 col-md-6 col-lg-4">
+            <div class="card-product">
+              <%= link_to document do %>
+                <div>
+                  <%= cl_image_tag(document.photos.first.key) %>
+                </div>
+                <div class="card-product-infos">
+                  <div>
+                    <h2><%= document.name %></h2>
+                    <% if document.expire < 30 %>
+                      <p style="color: red;"><%= "Expire in #{document.expire} days" %></p>
+                    <% else %>
+                      <p><%= "Expire in #{document.expire} days" %></p>
+                    <% end %>
+                  </div>
+                  <div class="btn-group">
+                    <%= link_to 'View', document_path(document), class: "btn btn-sm btn-outline-secondary rounded-left" %>
+                    <%= link_to 'Edit', edit_document_path(document), class: "btn btn-sm btn-outline-secondary rounded-right" %>
+                  </div>
+                </div>
+              <% end %>
+            </div>
+          </div>
+        <% end %>
+      <% else %>
+        <div class="col-xs-12 col-md-6 col-lg-4">
+          <div>
+            <em>Good job ! No deadlines...</em>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <hr>
+
+  <div class="pt-5 mb-5">
 
       <h2>📄 My last documents saved</h2>
       <br>
@@ -50,46 +95,6 @@
       <% end %>
     </div>
 
-  </div>
-
-  <hr>
-
-  <div>
-
-    <h2>🔔 Next upcoming deadlines</h2>
-    <br>
-
-    <div class="row">
-      <% if @documents_sorted_deadline.length > 0 %>
-        <% @documents_sorted_deadline.each do |document| %>
-          <div class="col-xs-12 col-md-6 col-lg-4">
-            <div class="card-product">
-              <%= link_to document do %>
-                <div>
-                  <%= cl_image_tag(document.photos.first.key) %>
-                </div>
-                <div class="card-product-infos">
-                  <div>
-                    <h2><%= document.name %></h2>
-                    <p><%= "Expire at #{document.deadline.strftime("%d.%m.%Y")}" %></p>
-                  </div>
-                  <div class="btn-group">
-                    <%= link_to 'View', document_path(document), class: "btn btn-sm btn-outline-secondary rounded-left" %>
-                    <%= link_to 'Edit', edit_document_path(document), class: "btn btn-sm btn-outline-secondary rounded-right" %>
-                  </div>
-                </div>
-              <% end %>
-            </div>
-          </div>
-        <% end %>
-      <% else %>
-        <div class="col-xs-12 col-md-6 col-lg-4">
-          <div>
-            <em>Good job ! No deadlines...</em>
-          </div>
-        </div>
-      <% end %>
-    </div>
   </div>
 
   <% else %>

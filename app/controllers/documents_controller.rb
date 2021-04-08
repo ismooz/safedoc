@@ -62,8 +62,9 @@ class DocumentsController < ApplicationController
 
   def destroy
     @document = Document.find(params[:id])
+    authorize @document
     @document.destroy
-    redirect_to folder_path(@document.folder)
+    redirect_to root_path, :notice => "Your document has been deleted"
   end
 
 

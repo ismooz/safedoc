@@ -1,60 +1,75 @@
 <div class="container bg-white">
-  <div class="row justify-content-center">
-
-    <div class="col-sm-10 form m-0 m-sm-5">
-      <!-- display breadcrumb -->
-      <nav aria-label="breadcrumb">
-        <ol class="breadcrumb">
-          <!-- root -->
-          <li class="breadcrumb-item">
-            <a href="<%= folders_path %>"><i class="fas fa-home fa"></i></a>
-          </li>
-          <!-- other items -->
-          <% @breadcrumb.each_with_index do |folder, index| %>
-            <li class="breadcrumb-item"><a href="<%= folder_path(folder) %>"><%= folder.name %></a></li>
-          <% end %>
-          <li class="breadcrumb-item active" aria-current="page"><%= @document.name %></li>
-        </ol>
-      </nav>
-      <!-- end display breadcrumb -->
-
+  <!-- display breadcrumb -->
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <!-- root -->
+        <li class="breadcrumb-item">
+          <a href="<%= folders_path %>"><i class="fas fa-home fa"></i></a>
+        </li>
+        <!-- other items -->
+        <% @breadcrumb.each_with_index do |folder, index| %>
+          <li class="breadcrumb-item"><a href="<%= folder_path(folder) %>"><%= folder.name %></a></li>
+        <% end %>
+        <li class="breadcrumb-item active" aria-current="page"><%= @document.name %></li>
+      </ol>
+    </nav>
+  <!-- end display breadcrumb -->
+  <div class="row justify-content-center m-auto">
+    <div class="form border mt-5">
       <!-- start display card -->
-        <div>
+      <div class="bg-light m-0 p-3 border-bottom">
+        <div class="d-flex align-items-end">
+          <div class="mr-auto">
+            <h3>Name : <%= @name %></h3>
+          </div>
+          <div class="p-2">
+            <span>
+              <%= @deadline %>
+            </span>
+          </div>
 
-          <h5 class="card-header text-center pb-0">
-            <%= @name %>
-              <span class="ml-2">
-                <%= link_to(:action => 'edit') do %>
-                  <i class="fa fa-edit fa"></i>
+        </div>
+
+        <div class="d-flex align-items-end">
+          <div class="mr-auto p-2 d-none d-sm-block">
+            <% if @tags %>
+              <span>Tags : <% @tags.each do |tag| %>
+                <label class="saved-tag"><%= tag.name %></label>
                 <% end %>
               </span>
-            <p>
-              <% if @tags %>
-                <% @tags.each do |tag| %>
-                  <label class="saved-tag"><%= tag.name %></label>
-                <% end %>
+            <% end %>
+          </div>
+          <div class="p-2 align-self-end">
+            <span class="ml-2" style="font-size: 24px;">
+              <%= link_to(:action => 'edit') do %>
+                <i class="fa fa-edit fa"></i>
               <% end %>
-            </p>
-          </h5>
+              <%= link_to document_path(@document), method: :delete, data: { confirm: "Are you sure?" } do %>
+                <i class="ml-3 fa fa-trash"></i>
+              <% end %>
+            </span>
+          </div>
 
-          <div class="card-body d-flex justify-content-center">
-            <div>
-              <div class="card-text text-center mb-3">
-                <%= @deadline %>
-              </div>
-              <!-- preview -->
-              <div class="card photo">
-                <a href="#" role="button" data-toggle="modal" data-target="#exampleModalCenter">
-                <%= cl_image_tag(@thumb_key) %>
-                <div class="bottom-right"><i class="fas fa-search-plus"></i></div>
-                </a>
-                <div class="card-body top-solid">
-                  <a href="<%= cloudinary_url(@download_key, :flags => "attachment") %>" class="btn btn-info text-white">Downlaod document</a>
-                </div>
-              </div>
-            </div>
-           </div>
         </div>
+
+      </div>
+
+      <div class="d-flex justify-content-center p-0">
+        <div>
+
+          <!-- preview -->
+          <div class="photo">
+            <a href="#" role="button" data-toggle="modal" data-target="#exampleModalCenter">
+            <%= cl_image_tag(@thumb_key) %>
+            </a>
+            <div class="card-body border-top">
+              <a href="<%= cloudinary_url(@download_key, :flags => "attachment") %>" class="btn btn-info text-white"><i class="fas fa-file-download mr-2" style="font-size: 18px;"></i> Downlaod document</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
 
       <!-- Modal -->
