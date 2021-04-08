@@ -28,20 +28,6 @@ class DocumentsController < ApplicationController
     @indented_folder_list = generate_array(folders)
   end
 
-  def edit
-    @document = Document.find(params[:id])
-    authorize @document
-    folders = Folder.all
-    @indented_folder_list = generate_array(folders)
-  end
-
-  def update
-    @document = Document.find(params[:id])
-    authorize @document
-    @document.update(document_params)
-    redirect_to @document
-  end
-
   def create
     @document = Document.new(document_params)
     authorize @document
@@ -60,9 +46,32 @@ class DocumentsController < ApplicationController
     end
   end
 
+  def edit
+    @document = Document.find(params[:id])
+    authorize @document
+    folders = Folder.all
+    @indented_folder_list = generate_array(folders)
+  end
+
+  def update
+    @document = Document.find(params[:id])
+    authorize @document
+    @document.update(document_params)
+    redirect_to @document
+  end
+
+  def destroy
+    @document = Document.find(params[:id])
+    authorize @document
+    @document.destroy
+    redirect_to root_path, :notice => "Your document has been deleted"
+  end
+
+
   def index
     @documents = policy_scope(Document).order(deadline: :asc)
     # search with associations
+
     if params[:name].present? || params[:type].present?
       sql_query = " \
         documents.name ILIKE :name \
@@ -72,8 +81,6 @@ class DocumentsController < ApplicationController
     else
       @documents = Document.all.take(50)
     end
-
-    @types = policy_scope(Type).order(name: :asc)
   end
 
   private
