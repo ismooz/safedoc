@@ -29,6 +29,16 @@ import { calculate } from '../components/reminder';
 import { alertDeadline, alertReminder } from '../components/reminder_alert';
 import { updateNbFiles } from '../components/notification';
 
+// app/javascript/packs/application.js
+// [...]
+import { loadDynamicBannerText } from '../components/banner';
+
+document.addEventListener('turbolinks:load', () => {
+  // Call your JS functions here
+  // [...]
+  loadDynamicBannerText();
+});
+
 
 window.addEventListener('load', () => {
    openFolder();
