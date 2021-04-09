@@ -22,7 +22,7 @@
                     <div>
                       <h2><%= document.name %></h2>
                       <% if document.expire.presence && document.expire > 0 && document.expire < 30 %>
-                        <p style="color: red;"><%= "Expire in #{document.expire} days" %></p>
+                        <p style="color: red; font-weight: bold;"><%= "Expire in #{document.expire} days" %></p>
                       <% else document.expire.presence && document.expire > 0 %>
                         <p><%= "Expire in #{document.expire} days" %></p>
                       <% end %>
