@@ -1,4 +1,7 @@
 class FoldersController < ApplicationController
+
+   before_action :set_user_documents, only: [:show]
+
   def index
     @folders = policy_scope(Folder) # what does that mean ?
     @folders = Folder.where(folder_id: nil)
@@ -18,7 +21,7 @@ class FoldersController < ApplicationController
     @breadcrumb = generate_breadcrumb(folder, breadcrumb)
 
     # files
-    @documents = Document.where(folder_id: params[:id])
+    @documents = @user_documents.where(folder_id: params[:id])
     authorize @documents
   end
 

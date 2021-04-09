@@ -1,6 +1,6 @@
 <div class="container bg-white">
 <!-- start of search bar -->
-  <form class="form row" action="/documents">
+  <form class="form row mb-5" action="/documents">
 
     <!-- name field -->
     <div class="col-md-6 mt-3">
@@ -18,7 +18,7 @@
                                     aria-label="Search">
 
         <option value="">Document type</option>
-        <%= @types.each do |type| %> 
+        <%= @types.each do |type| %>
           <option value="<%= type.name %>"><%= type.name %></option>
         <% end %>
       </select>

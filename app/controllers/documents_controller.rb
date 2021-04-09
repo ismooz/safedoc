@@ -1,6 +1,9 @@
 class DocumentsController < ApplicationController
+
+  before_action :set_user_documents, only: [:show, :index]
+
   def show
-    @document = Document.find(params[:id])
+    @document = @user_documents.find(params[:id])
     authorize @document
 
     # parent folder
@@ -11,8 +14,8 @@ class DocumentsController < ApplicationController
     @breadcrumb = generate_breadcrumb(folder, breadcrumb)
 
     # doc infos
-    @deadline = @document.deadline.strftime("Expiry: %d %B %Y")
-    @reminder = @document.reminder.strftime("Reminder: %d %B %Y")
+    # @deadline = @document.deadline.strftime("Expiry: %d %B %Y")
+    # @reminder = @document.reminder.strftime("Reminder: %d %B %Y")
     @updated_at = @document.updated_at.strftime("Last updated: %d %B %Y")
     @name = @document.name
     @thumb_key = @document.photos.first.key
@@ -56,8 +59,15 @@ class DocumentsController < ApplicationController
   def update
     @document = Document.find(params[:id])
     authorize @document
-    @document.update(document_params)
-    redirect_to @document
+    type_ids = params[:document][:type_ids]
+    if @document.update(document_params)
+      type_ids.each do |type_id|
+        update_doctype(type_id)
+      end
+      redirect_to @document
+    else
+      render :update
+    end
   end
 
   def destroy
@@ -77,10 +87,13 @@ class DocumentsController < ApplicationController
         documents.name ILIKE :name \
         AND types.name ILIKE :type \
       "
-      @documents = Document.joins(:types).joins(:document_types).where(sql_query, type: "%#{params[:type]}%", name: "%#{params[:name]}%")
+      @documents = @user_documents.joins(:types).joins(:document_types).where(sql_query, type: "%#{params[:type]}%", name: "%#{params[:name]}%")
     else
-      @documents = Document.all.take(50)
+      @documents = @user_documents.take(50)
     end
+
+    @types = policy_scope(Type).order(name: :asc)
+
   end
 
   private
@@ -112,4 +125,10 @@ class DocumentsController < ApplicationController
     end
   end
 
+  def update_doctype(type_id)
+    doctype = DocumentType.new
+    doctype.document = @document
+    doctype.type_id = type_id
+    doctype.save
+  end
 end

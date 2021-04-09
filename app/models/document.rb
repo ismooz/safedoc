@@ -4,9 +4,10 @@ class Document < ApplicationRecord
   has_many :document_types, dependent: :destroy
   has_many_attached :photos
   has_many :types, through: :document_types
-  validates :name, :deadline, :reminder, :photos, presence: true
+  validates :name, :photos, presence: true
 
-   def expire
-    @expire = (deadline - Date.current).to_i
+  def expire
+    (deadline - Date.current).to_i if deadline
   end
+
 end

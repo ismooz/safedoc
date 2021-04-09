@@ -24,7 +24,7 @@
           </div>
           <div class="p-2">
             <span>
-              <%= @deadline %>
+              <%= @document.deadline.strftime("Expire at: %d.%m.%Y") if @document.deadline %>
             </span>
           </div>
 
@@ -33,7 +33,7 @@
         <div class="d-flex align-items-end">
           <div class="mr-auto p-2 d-none d-sm-block">
             <% if @tags %>
-              <span>Tags : <% @tags.each do |tag| %>
+              <span>Type : <% @tags.each do |tag| %>
                 <label class="saved-tag"><%= tag.name %></label>
                 <% end %>
               </span>
@@ -44,7 +44,7 @@
               <%= link_to(:action => 'edit') do %>
                 <i class="fa fa-edit fa"></i>
               <% end %>
-              <%= link_to document_path(@document), method: :delete, data: { confirm: "Are you sure?" } do %>
+              <%= link_to document_path(@document), method: :delete, data: { confirm: "Are you sure ?" } do %>
                 <i class="ml-3 fa fa-trash"></i>
               <% end %>
             </span>
