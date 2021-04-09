@@ -49,7 +49,11 @@
 
                 <div>
                   <h2><%= document.name %></h2>
-                  <p><%= "Created at #{ document.created_at.strftime("%d.%m.%Y") }" %></p>
+                  <% if document.expire.presence && document.expire > 0 && document.expire < 30 %>
+                    <p style="color: red; font-weight: bold;"><%= "#{document.expire_string}" %></p>
+                  <% else document.expire.presence && document.expire > 0 %>
+                    <p><%= "#{document.expire_string}" %></p>
+                  <% end %>
                 </div>
                   <div class="btn-group">
                     <%= link_to 'View', document_path(document), class: "btn btn-sm btn-outline-secondary rounded-left" %>
