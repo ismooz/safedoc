@@ -23,7 +23,7 @@ Folder.create(name: "Family", folder_id: folder_1.id)
 Folder.create(name: "Identity", folder_id: folder_1.id)
 Folder.create(name: "Health", folder_id: folder_1.id)
 Folder.create(name: "Work", folder_id: folder_1.id)
-Folder.create(name: "Insurance", folder_id: folder_1.id)
+
 
 folder_2 = Folder.create(name: "Home")
 Folder.create(name: "Energie", folder_id: folder_2.id)
