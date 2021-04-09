@@ -60,9 +60,14 @@ class DocumentsController < ApplicationController
     @document = Document.find(params[:id])
     authorize @document
     type_ids = params[:document][:type_ids]
+
+    # we remove the type ids
+    DocumentType.where(document_id: @document.id).destroy_all 
+    
     if @document.update(document_params)
+      # we save the type ids
       type_ids.each do |type_id|
-        update_doctype(type_id)
+        save_doctype(type_id)
       end
       redirect_to @document
     else
@@ -123,12 +128,5 @@ class DocumentsController < ApplicationController
       doctype.type_id = type_id
       doctype.save
     end
-  end
-
-  def update_doctype(type_id)
-    doctype = DocumentType.new
-    doctype.document = @document
-    doctype.type_id = type_id
-    doctype.save
   end
 end
