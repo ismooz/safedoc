@@ -92,7 +92,7 @@ class DocumentsController < ApplicationController
         documents.name ILIKE :name \
         AND types.name ILIKE :type \
       "
-      @documents = @user_documents.joins(:types).joins(:document_types).where(sql_query, type: "%#{params[:type]}%", name: "%#{params[:name]}%")
+      @documents = @user_documents.joins(:types).joins(:document_types).where(sql_query, type: "%#{params[:type]}%", name: "%#{params[:name]}%").uniq
     else
       @documents = @user_documents.take(50)
     end
