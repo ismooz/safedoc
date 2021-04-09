@@ -24,7 +24,7 @@
           </div>
           <div class="p-2">
             <span>
-              <%= @deadline %>
+              <%= @document.deadline.strftime("Expire at: %d.%m.%Y") if @document.deadline %>
             </span>
           </div>
 

@@ -14,8 +14,8 @@ class DocumentsController < ApplicationController
     @breadcrumb = generate_breadcrumb(folder, breadcrumb)
 
     # doc infos
-    @deadline = @document.deadline.strftime("Expiry: %d %B %Y")
-    @reminder = @document.reminder.strftime("Reminder: %d %B %Y")
+    # @deadline = @document.deadline.strftime("Expiry: %d %B %Y")
+    # @reminder = @document.reminder.strftime("Reminder: %d %B %Y")
     @updated_at = @document.updated_at.strftime("Last updated: %d %B %Y")
     @name = @document.name
     @thumb_key = @document.photos.first.key

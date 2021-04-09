@@ -9,31 +9,32 @@
     <br>
 
     <div class="row">
-      <% if @documents_sorted_deadline.length > 0 %>
+      <% if @documents_sorted_deadline.length > 0%>
+
         <% @documents_sorted_deadline.each do |document| %>
-          <div class="col-xs-12 col-md-6 col-lg-4">
-            <div class="card-product">
-              <%= link_to document do %>
-                <div>
-                  <%= cl_image_tag(document.photos.first.key) %>
-                </div>
-                <div class="card-product-infos">
+            <div class="col-xs-12 col-md-6 col-lg-4">
+              <div class="card-product">
+                <%= link_to document do %>
                   <div>
-                    <h2><%= document.name %></h2>
-                    <% if document.expire < 30 %>
-                      <p style="color: red;"><%= "Expire in #{document.expire} days" %></p>
-                    <% else %>
-                      <p><%= "Expire in #{document.expire} days" %></p>
-                    <% end %>
+                    <%= cl_image_tag(document.photos.first.key) %>
                   </div>
-                  <div class="btn-group">
-                    <%= link_to 'View', document_path(document), class: "btn btn-sm btn-outline-secondary rounded-left" %>
-                    <%= link_to 'Edit', edit_document_path(document), class: "btn btn-sm btn-outline-secondary rounded-right" %>
+                  <div class="card-product-infos">
+                    <div>
+                      <h2><%= document.name %></h2>
+                      <% if document.expire.presence && document.expire > 0 && document.expire < 30 %>
+                        <p style="color: red;"><%= "Expire in #{document.expire} days" %></p>
+                      <% else document.expire.presence && document.expire > 0 %>
+                        <p><%= "Expire in #{document.expire} days" %></p>
+                      <% end %>
+                    </div>
+                    <div class="btn-group">
+                      <%= link_to 'View', document_path(document), class: "btn btn-sm btn-outline-secondary rounded-left" %>
+                      <%= link_to 'Edit', edit_document_path(document), class: "btn btn-sm btn-outline-secondary rounded-right" %>
+                    </div>
                   </div>
-                </div>
-              <% end %>
+                <% end %>
+              </div>
             </div>
-          </div>
         <% end %>
       <% else %>
         <div class="col-xs-12 col-md-6 col-lg-4">
@@ -42,6 +43,7 @@
           </div>
         </div>
       <% end %>
+
     </div>
   </div>
 
@@ -49,7 +51,7 @@
 
   <div class="pt-5 mb-5">
 
-      <h2><i class="far fa-file"></i> My last documents saved</h2>
+      <h2><i class="far fa-clock"></i> My last documents saved</h2>
       <br>
 
     <div class="row">
