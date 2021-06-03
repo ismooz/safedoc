@@ -12,16 +12,16 @@
     <ul class="navbar-nav mr-auto">
       <% if user_signed_in? %>
         <li class="nav-item">
-          <%= link_to "Home", root_path, class: "nav-link text-info" %>
+          <%= link_to "Accueil", root_path, class: "nav-link text-info" %>
         </li>
         <li class="nav-item">
-          <%= link_to "Add doc", new_document_path, class: "nav-link text-info" %>
+          <%= link_to "Ajouter doc", new_document_path, class: "nav-link text-info" %>
         </li>
         <li class="nav-item">
-          <%= link_to "Folders", folders_path, class: "nav-link text-info" %>
+          <%= link_to "Dossiers", folders_path, class: "nav-link text-info" %>
         </li>
          <!--  <li class="nav-item">
-          <%= link_to "Reminders", folders_path, class: "nav-link text-info" %>
+          <%= link_to "Rappels", folders_path, class: "nav-link text-info" %>
         </li> -->
         <li class="nav-item">
           <%= link_to '<i class="fas fa-search"></i> Search'.html_safe, documents_path, class: "nav-link text-info" %>
@@ -33,21 +33,21 @@
             <%= image_tag "default-avatar.jpg", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
           <% end %>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-            <%= link_to "Pricing", pricing_path, class: "dropdown-item text-info" %>
+            <%= link_to "Prix", pricing_path, class: "dropdown-item text-info" %>
             <%= link_to "FAQ", faq_path, class: "dropdown-item text-info" %>
-            <%= link_to "Edit profile", edit_user_registration_path, class: "dropdown-item text-info" %>
+            <%= link_to "Editer profile", edit_user_registration_path, class: "dropdown-item text-info" %>
             <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item text-info" %>
           </div>
         </li>
       <% else %>
         <li class="nav-item">
-          <%= link_to "Home", root_path, class: "nav-link text-info" %>
+          <%= link_to "Accueil", root_path, class: "nav-link text-info" %>
         </li>
         <li class="nav-item">
-          <%= link_to "Pricing", pricing_path, class: "nav-link text-info" %>
+          <%= link_to "Prix", pricing_path, class: "nav-link text-info" %>
         </li>
         <li class="nav-item">
-          <%= link_to "About us", about_path, class: "nav-link text-info" %>
+          <%= link_to "A notre propos", about_path, class: "nav-link text-info" %>
         </li>
         <li class="nav-item">
           <%= link_to "FAQ", faq_path, class: "nav-link text-info mr-5" %>
@@ -56,7 +56,7 @@
           <%= link_to "Login", new_user_session_path, class: "btn btn-outline-info mr-2" %>
         </li>
         <li>
-          <%= link_to "Sign up", new_user_registration_path, class: "btn btn-outline-info" %>
+          <%= link_to "S'enregistrer", new_user_registration_path, class: "btn btn-outline-info" %>
         </li>
       <% end %>
     </ul>
