@@ -10,27 +10,27 @@
           <%= f.input :first_name,
                       required: true,
                       autofocus: true,
-                      input_html: { autocomplete: "first name" }%>
+                      input_html: { autocomplete: "Nom" }%>
           <%= f.input :last_name,
                       required: true,
                       autofocus: true,
-                      input_html: { autocomplete: "last name" }%>
+                      input_html: { autocomplete: "Prénom" }%>
           <%= f.input :email,
                       required: true,
                       autofocus: true,
-                      input_html: { autocomplete: "email" }%>
+                      input_html: { autocomplete: "Email" }%>
           <%= f.input :profile_image,
                       required: false,
-                      input_html: { autocomplete: "profile image" },
+                      input_html: { autocomplete: "Photo de profile" },
                       as: :file %>
           <%= f.input :password,
                       required: true,
-                      hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
+                      hint: ("#{@minimum_password_length} caractères minimum" if @minimum_password_length),
                       input_html: { autocomplete: "new-password" } %>
           <%= f.input :password_confirmation,
                       required: true,
                       input_html: { autocomplete: "new-password" } %>
-          <%= f.input :chk_box_validation, label: (link_to 'I agree to the GDPR compliance ', '#gdprModal', :class => 'link', 'data-toggle' => 'modal') %>
+          <%= f.input :chk_box_validation, label: (link_to "Je suis d'accord avec la GDPR", '#gdprModal', :class => 'link', 'data-toggle' => 'modal') %>
 
         <!-- Modal -->
            <%= render 'shared/gdpr' %>
